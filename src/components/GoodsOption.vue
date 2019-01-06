@@ -1,13 +1,12 @@
 <template>
-  <router-view></router-view>
+<div></div>
 </template>
 
 <script>
-
+// name string
+// value array
 export default {
-  name: 'index',
-  components: {
-  }
+  name: 'GoodsOption'
 }
 </script>
 

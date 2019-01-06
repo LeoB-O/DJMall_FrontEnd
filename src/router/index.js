@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/view/index'
+import SignIn from '@/view/SignIn'
+import SignUp from '@/view/SignUp'
+import Cart from '@/view/Cart'
+import Main from '@/view/Main'
+import GoodsDetail from '@/view/GoodsDetail'
+import Catagory from '@/view/Catagory'
 
 Vue.use(Router)
 
@@ -8,8 +14,36 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: Index
+      component: Main,
+      children: [
+        {
+          path: '',
+          component: Index
+        },
+        {
+          path: ':catagory',
+          component: Catagory
+        },
+        {
+          path: ':goodsid',
+          component: GoodsDetail
+        }
+      ]
+    },
+    {
+      path: '/signin',
+      name: 'SignIn',
+      component: SignIn
+    },
+    {
+      path: '/signup',
+      name: 'SignUp',
+      component: SignUp
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
     }
   ]
 })

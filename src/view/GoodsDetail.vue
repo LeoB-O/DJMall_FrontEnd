@@ -1,13 +1,10 @@
 <template>
-  <router-view></router-view>
+<div></div>
 </template>
 
 <script>
-
 export default {
-  name: 'index',
-  components: {
-  }
+  name: 'GoodsDetail'
 }
 </script>
 

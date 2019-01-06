@@ -1,13 +1,14 @@
 <template>
-  <router-view></router-view>
+<div></div>
 </template>
 
 <script>
-
+// image-url
+// name
+// price
+// description
 export default {
-  name: 'index',
-  components: {
-  }
+  name: 'GoodsInfo'
 }
 </script>
 

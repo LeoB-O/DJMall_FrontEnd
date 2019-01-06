@@ -1,13 +1,15 @@
 <template>
-  <router-view></router-view>
+<div>
+</div>
 </template>
 
 <script>
-
+// name
+// price
+// type-arg array
+// amount
 export default {
-  name: 'index',
-  components: {
-  }
+  name: 'CartItem'
 }
 </script>
 
