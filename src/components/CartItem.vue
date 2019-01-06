@@ -1,18 +1,66 @@
 <template>
-<div>
+<div class="cart-item">
+  <div class="cart-item-img">
+    <img :src="imgUrl" />
+  </div>
+  <div class="cart-item-info">
+    <div class="cart-item-name">{{name}}</div>
+    <div class="cart-item-detail">
+      <div v-for="typeArg in typeArgs" :key="typeArg">
+        {{typeArg}}
+      </div>
+    </div>
+  </div>
+  <div class="cart-item-price">${{price}}</div>
 </div>
 </template>
 
 <script>
-// name
-// price
-// type-arg array
-// amount
 export default {
-  name: 'CartItem'
+  name: 'CartItem',
+  props: {
+    name: String,
+    price: Number,
+    typeArgs: Array,
+    amount: Number,
+    imgUrl: String
+  }
 }
 </script>
 
 <style scoped>
+* {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-around;
+}
 
+.cart-item {
+  border: 1px solid lightgrey;
+}
+
+.cart-item-img {
+  width: 20%;
+}
+
+.cart-item-info {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.cart-item-name {
+  margin: 0px 0px 10px 0px;
+}
+
+.cart-item-detail {
+  margin: 0px 0px 5px 0px;
+}
+
+.cart-item-price {
+  color: #f77;
+  font-size: 20px;
+  justify-content: flex-end;
+}
 </style>

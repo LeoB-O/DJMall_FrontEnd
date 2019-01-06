@@ -21,11 +21,11 @@ export default new Router({
           component: Index
         },
         {
-          path: ':catagory',
+          path: 'catagory/:catagory',
           component: Catagory
         },
         {
-          path: ':goodsid',
+          path: 'good/:goodid',
           component: GoodsDetail
         }
       ]
