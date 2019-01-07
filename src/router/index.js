@@ -18,15 +18,17 @@ export default new Router({
       children: [
         {
           path: '',
-          component: Index
-        },
-        {
-          path: 'catagory/:catagory',
-          component: Catagory
-        },
-        {
-          path: 'good/:goodid',
-          component: GoodsDetail
+          component: Index,
+          children: [
+            {
+              path: 'catagory/:catagory',
+              component: Catagory
+            },
+            {
+              path: 'good/:goodid',
+              component: GoodsDetail
+            }
+          ]
         }
       ]
     },
