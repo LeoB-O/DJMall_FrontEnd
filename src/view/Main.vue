@@ -20,9 +20,13 @@ export default {
 * {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-  height: 20%;
+  height: auto;
+  width: 100%;
+  flex-direction: row;
 }
 </style>
