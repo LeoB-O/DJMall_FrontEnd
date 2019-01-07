@@ -9,6 +9,10 @@
       <div v-for="typeArg in typeArgs" :key="typeArg">
         {{typeArg}}
       </div>
+      <div class="cart-item-action">
+        <Button type="warning">修改</Button>
+        <Button type="error">删除</Button>
+      </div>
     </div>
   </div>
   <div class="cart-item-price">${{price}}</div>
@@ -35,6 +39,7 @@ export default {
   font-size: 14px;
   display: flex;
   justify-content: space-around;
+  font-family: "Apple Braille";
 }
 
 .cart-item {
@@ -42,7 +47,7 @@ export default {
 }
 
 .cart-item-img {
-  width: 20%;
+  width: 50%;
 }
 
 .cart-item-info {
@@ -52,10 +57,13 @@ export default {
 
 .cart-item-name {
   margin: 0px 0px 10px 0px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .cart-item-detail {
   margin: 0px 0px 5px 0px;
+  flex-direction: column;
 }
 
 .cart-item-price {

@@ -1,28 +1,26 @@
 <template>
   <Menu active-name="1-2" :open-names="['1']">
-    <Submenu name="1">
+    <Submenu v-for="content in contents" :name="content.name" :key="content.name">
       <template slot="title">
-        <Icon type="ios-analytics" />
-        Navigation One
+        {{content.name}}
       </template>
-      <MenuGroup title="Item 1">
-        <MenuItem name="1-1">Option 1</MenuItem>
-        <MenuItem name="1-2">Option 2</MenuItem>
-      </MenuGroup>
-      <MenuGroup title="Item 2">
-        <MenuItem name="1-3">Option 3</MenuItem>
-        <MenuItem name="1-4">Option 4</MenuItem>
-      </MenuGroup>
+      <MenuItem :name="item" v-for="item in content.value" :key="item">{{item}}</MenuItem>
     </Submenu>
   </Menu>
 </template>
 
 <script>
 export default {
-  name: 'MyMenu'
+  name: 'MyMenu',
+  props: {
+    contents: Array
+  }
 }
 </script>
 
 <style scoped>
-
+* {
+  display: flex;
+  flex-direction: column;
+}
 </style>

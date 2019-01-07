@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MyMenu class="index-menu"></MyMenu>
+    <MyMenu class="index-menu" :contents="[{name:'cloths', value:['Men', 'Women']},{name:'3C',value:['Phone','Computer']}]"></MyMenu>
     <div class="index-content"><router-view></router-view></div>
   </div>
 </template>

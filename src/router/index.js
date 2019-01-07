@@ -5,6 +5,7 @@ import SignIn from '@/view/SignIn'
 import SignUp from '@/view/SignUp'
 import Cart from '@/view/Cart'
 import Main from '@/view/Main'
+import Content from '@/view/Content'
 import GoodsDetail from '@/view/GoodsDetail'
 import Catagory from '@/view/Catagory'
 
@@ -20,6 +21,10 @@ export default new Router({
           path: '',
           component: Index,
           children: [
+            {
+              path: '',
+              component: Content
+            },
             {
               path: 'catagory/:catagory',
               component: Catagory
