@@ -1,6 +1,6 @@
 <template>
 <div>
-  <GoodsOption name="size" :values="[37,38,39,40,41,42,43,44,45,46,47,48,49]"></GoodsOption>
+  <GoodsOption class="good-option" name="size" :values="[37,38,39,40,41,42,43,44,45,46,47,48,49]"></GoodsOption>
 </div>
 </template>
 
@@ -16,5 +16,8 @@ export default {
 </script>
 
 <style scoped>
-
+.good-option {
+  width: 50%;
+  height: 20%;
+}
 </style>

@@ -1,41 +1,61 @@
 <template>
-  <Menu mode="horizontal" theme="light" active-name="1">
-    <MenuItem name="1">
+  <Menu class="header-menu" mode="horizontal" theme="light" active-name="1">
+    <Icon size="30" class="header-icon" type="logo-bitcoin" />
+    <div class="header-title">DJ MALL</div>
+    <Search class="header-search"></Search>
+    <MenuItem v-if="isLogin" name="1">
       <Icon type="ios-paper" />
-      内容管理
+      个人中心
     </MenuItem>
-    <MenuItem name="2">
+    <MenuItem v-if="!isLogin" name="2">
+      <Icon type="ios-paper" />
+      登录
+    </MenuItem>
+    <MenuItem v-if="!isLogin" name="3">
       <Icon type="ios-people" />
-      用户管理
+      注册
     </MenuItem>
-    <Submenu name="3">
-      <template slot="title">
-        <Icon type="ios-stats" />
-        统计分析
-      </template>
-      <MenuGroup title="使用">
-        <MenuItem name="3-1">新增和启动</MenuItem>
-        <MenuItem name="3-2">活跃分析</MenuItem>
-        <MenuItem name="3-3">时段分析</MenuItem>
-      </MenuGroup>
-      <MenuGroup title="留存">
-        <MenuItem name="3-4">用户留存</MenuItem>
-        <MenuItem name="3-5">流失用户</MenuItem>
-      </MenuGroup>
-    </Submenu>
     <MenuItem name="4">
       <Icon type="ios-construct" />
-      综合设置
+      购物车
     </MenuItem>
   </Menu>
 </template>
 
 <script>
+import Search from '@/components/Search'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  props: {
+    isLogin: Boolean,
+    userID: String
+  },
+  components: {
+    Search
+  }
 }
 </script>
 
 <style scoped>
+.header-icon {
+  padding: 15px 5px;
+  position: absolute;
+  left: 0px;
+}
 
+.header-search {
+  padding: 10px 5px;
+}
+
+.header-title {
+  position: absolute;
+  left: 40px;
+  font-size: 36px;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: flex-end;
+}
 </style>

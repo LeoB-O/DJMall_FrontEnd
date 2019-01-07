@@ -1,5 +1,7 @@
 <template>
-<div></div>
+  <div>
+    <Input size="large" search enter-button placeholder="Enter something..." />
+  </div>
 </template>
 
 <script>
