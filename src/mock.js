@@ -83,3 +83,10 @@ Mock.mock(/\/good/, 'get', {
     }]
   }
 })
+
+Mock.mock(/\/catagories/, 'get', {
+  success: true,
+  data: {
+    menu: [{name:'cloths', value:['Men', 'Women']},{name:'3C',value:['Phone','Computer']}]
+  }
+})

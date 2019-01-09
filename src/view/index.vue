@@ -1,16 +1,28 @@
 <template>
   <div>
-    <MyMenu class="index-menu" :contents="[{name:'cloths', value:['Men', 'Women']},{name:'3C',value:['Phone','Computer']}]"></MyMenu>
+    <MyMenu class="index-menu" :contents="menu"></MyMenu>
     <div class="index-content"><router-view></router-view></div>
   </div>
 </template>
 
 <script>
 import MyMenu from '@/components/MyMenu'
+import axios from '@/axios'
+
 export default {
   name: 'index',
   components: {
     MyMenu
+  },
+  data () {
+    return {
+      menu: []
+    }
+  },
+  created () {
+    axios.get('/catagories').then((response) => {
+      this.menu = response.data.menu
+    })
   }
 }
 </script>
