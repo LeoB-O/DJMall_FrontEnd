@@ -16,11 +16,20 @@ export default {
   },
   data () {
     return {
-      goods: [{id: '123', name: 'Nike Air VaporMax', price: 33, imageUrl: '/static/logo.png', description: 'Men\'s Shoes'}]
+      goods: []
     }
   },
-  created () {
-    axios.get('/goods/catagory?catagory=' + this.$route.params.catagory).then((response) => { console.log(response) })
+  mounted () {
+    axios.get('/goods/catagory?catagory=' + this.$route.params.catagory).then((response) => {
+      this.goods = response.data.goods
+    })
+  },
+  watch: {
+    '$route' (to, from) {
+      axios.get('/goods/catagory?catagory=' + this.$route.params.catagory).then((response) => {
+        this.goods = response.data.goods
+      })
+    }
   }
 }
 </script>
