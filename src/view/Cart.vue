@@ -18,6 +18,7 @@
 
 <script>
 import CartItem from '@/components/CartItem'
+import axios from '@/axios'
 
 export default {
   name: 'Cart',
@@ -26,19 +27,7 @@ export default {
   },
   data () {
     return {
-      cartItems: [{
-        name: 'test1',
-        price: 12,
-        amount: 2,
-        imgUrl: '/static/logo.png',
-        typeArgs: ['size:12', 'color:white']
-      }, {
-        name: 'test2',
-        price: 22,
-        amount: 2,
-        imgUrl: '/static/logo.png',
-        typeArgs: ['size:12', 'color:white']
-      }],
+      cartItems: [],
       deliveryFee: 0
     }
   },
@@ -49,6 +38,9 @@ export default {
     total: function () {
       return this.cartItems.reduce((accumulate, currentValue) => accumulate.price + currentValue.price)
     }
+  },
+  created () {
+    axios.get('/cart').then((response) => { this.cartItems = response.data.cartItems })
   }
 }
 </script>
