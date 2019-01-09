@@ -7,13 +7,20 @@
 </template>
 
 <script>
+import axios from '@/axios'
+
 export default {
   name: 'Content',
   data () {
     return {
       value1: 0,
-      imgUrls: ['/static/logo.png', '/static/logo.png']
+      imgUrls: []
     }
+  },
+  created () {
+    axios.get('/indexImg').then((response) => {
+      this.imgUrls = response.data.imgUrls
+    })
   }
 }
 </script>

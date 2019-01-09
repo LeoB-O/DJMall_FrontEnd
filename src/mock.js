@@ -62,3 +62,10 @@ Mock.mock(/\/store/, 'get', {
     menu: [{name: 'cloths', value: ['Men', 'Women']}, {name: '3C', value: ['Phone', 'Computer']}]
   }
 })
+
+Mock.mock(/\/indexImg/, 'get', {
+  success: true,
+  data: {
+    imgUrls: ['/static/logo.png', '/static/logo.png']
+  }
+})
