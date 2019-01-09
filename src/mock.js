@@ -69,3 +69,17 @@ Mock.mock(/\/indexImg/, 'get', {
     imgUrls: ['/static/logo.png', '/static/logo.png']
   }
 })
+
+Mock.mock(/\/good/, 'get', {
+  success: true,
+  data: {
+    name: 'Nike Air VaporMax',
+    imgUrls: ['/static/logo.png', '/static/logo.png'],
+    value1: 0,
+    description: 'Nike Air VaporMax 2019 男子运动鞋采用弹性梭织材料，妥善包覆双足，塑就出众结构感和强力支撑的迈步体验。<br />足底搭载 Air Max 缓震配置，轻盈感和柔韧性出众，塑就弹力十足的出众脚感，宛如云端畅跑。',
+    options: [{name: 'size', values: [37, 38, 39.40, 41, 42, 43, 44]}, {
+      name: 'color',
+      values: ['white', 'yellow', 'blue']
+    }]
+  }
+})
