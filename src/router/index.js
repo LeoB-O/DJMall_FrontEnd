@@ -10,6 +10,8 @@ import GoodsDetail from '@/view/GoodsDetail'
 import Catagory from '@/view/Catagory'
 import CommercialIndex from '@/view/CommercialIndex'
 import PersonalInfo from '@/view/PersonalInfo'
+import Order from '@/view/Order'
+import EditInfo from '@/view/Editinfo'
 
 Vue.use(Router)
 
@@ -25,7 +27,17 @@ export default new Router({
         },
         {
           path: '/personalInfo/:id',
-          component: PersonalInfo
+          component: PersonalInfo,
+          children:[
+            {
+              path:'order',
+              component:Order
+            },
+            {
+              path:'editpinfo',
+              component:EditInfo
+            }
+          ]
         },
         {
           path: '/signin',
