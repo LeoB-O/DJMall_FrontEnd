@@ -8,6 +8,8 @@ import Main from '@/view/Main'
 import Content from '@/view/Content'
 import GoodsDetail from '@/view/GoodsDetail'
 import Catagory from '@/view/Catagory'
+import CommercialIndex from '@/view/CommercialIndex'
+import PersonalInfo from '@/view/PersonalInfo'
 
 Vue.use(Router)
 
@@ -17,6 +19,14 @@ export default new Router({
       path: '/',
       component: Main,
       children: [
+        {
+          path: '/commercial/:commercialId',
+          component: CommercialIndex
+        },
+        {
+          path: '/personalInfo/:id',
+          component: PersonalInfo
+        },
         {
           path: '',
           component: Index,
