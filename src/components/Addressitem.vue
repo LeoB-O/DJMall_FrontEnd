@@ -13,7 +13,7 @@
         <Button type="primary" @click="edit = true">修改</Button>
       </div>
     </div>
-    <Modal v-model="edit" title="Edit Address">
+    <Modal v-model="edit" title="Edit Address" @on-ok="Editad">
       <div>
         <Select v-model="province">
           <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import axios from '@/axios'
 export default {
   name: "Addressitem",
   props: {
@@ -72,6 +73,18 @@ export default {
         }
       ]
     };
+  },
+  methods:{
+    Editad:function(){
+      axios.post('/editaddress',{
+        province:this.province,
+        city:this.city,
+        region:this.region,
+        address:this.address
+      }).then((response)=>{
+        console.log(response)
+      })
+    }
   }
 };
 </script>

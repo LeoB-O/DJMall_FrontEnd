@@ -14,7 +14,7 @@
       </div>
 
       <div class="Button">
-        <Button type="primary">SignIn</Button>
+        <Button type="primary" @click="checkPassword">SignIn</Button>
         <Button type="info" style="margin-left:40px">SignUp</Button>
       </div>
     </div>
@@ -22,13 +22,37 @@
 </template>
 
 <script>
+import axios from "@/axios";
+
 export default {
   name: "SignIn",
   data() {
     return {
-      username: '',
-      password: ''
+      username: "",
+      password: "",
+      right: false
     };
+  },
+  computed: {},
+  methods: {
+    checkPassword: function() {
+      axios
+        .get("/signin", {
+          params: {
+            UserName: this.username
+          }
+        })
+        .then(response => {
+          this.right = response.data.right;
+          if(this.right)
+          {
+            console.log('ok')
+          }
+          else{
+            console.log('error')
+          }
+        });
+    }
   }
 };
 </script>
@@ -50,6 +74,6 @@ export default {
 
 .Button {
   float: left;
-  margin-left: 5px
+  margin-left: 5px;
 }
 </style>

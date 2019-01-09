@@ -21,13 +21,24 @@
 </template>
 
 <script>
+import axios from '@/axios'
 export default {
   name: 'PersonalInfo',
   data(){
     return{
       tabs:'',
-      username:'Zeo Yang'
+      username:'',
+      avdarurl:''
     }
+  },
+  created(){
+    axios.get('/personalinfo',{params:{
+      ID:this.$route.params.id
+    }}).then((response)=>{
+      this.username=response.data.username
+      this.avdarurl=response.data.avdarurl
+      console.log(this.username)
+    })
   }
 }
 </script>
@@ -44,9 +55,7 @@ export default {
 .head{
   height: 200px;
 }
-.content{
-  
-}
+
 .avatar{
   margin: 20px auto;
   width: 100px;
