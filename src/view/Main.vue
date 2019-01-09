@@ -7,7 +7,7 @@
 
 <script>
 import Header from '@/components/Header'
-import axios from 'axios'
+import axios from '@/axios'
 
 export default {
   name: 'Main',
@@ -15,7 +15,7 @@ export default {
     'Header': Header
   },
   created () {
-    console.log(axios.get('/login'))
+    console.log(axios.get('/login').then((response) => { console.log(response) }))
   }
 }
 </script>
