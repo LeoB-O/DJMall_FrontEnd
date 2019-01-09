@@ -87,6 +87,13 @@ Mock.mock(/\/good/, 'get', {
 Mock.mock(/\/catagories/, 'get', {
   success: true,
   data: {
-    menu: [{name:'cloths', value:['Men', 'Women']},{name:'3C',value:['Phone','Computer']}]
+    menu: [{name: 'cloths', value: ['Men', 'Women']}, {name: '3C', value: ['Phone', 'Computer']}]
+  }
+})
+
+Mock.mock(/\/user/, 'get', {
+  success: Random.boolean(),
+  data: {
+    'id': Random.word(3, 6)
   }
 })

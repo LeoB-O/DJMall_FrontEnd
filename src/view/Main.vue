@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header class="header" :is-login="false" user-i-d="123"></Header>
+    <Header class="header" :is-login="isLogin" :user-i-d="userID"></Header>
     <router-view></router-view>
   </div>
 </template>
@@ -14,8 +14,17 @@ export default {
   components: {
     'Header': Header
   },
+  data () {
+    return {
+      isLogin: false,
+      userID: null
+    }
+  },
   created () {
-    console.log(axios.get('/login').then((response) => { console.log(response) }))
+    axios.get('/user').then((response) => {
+      this.isLogin = !!response.success
+      this.userID = response.success ? response.data.id : null
+    })
   }
 }
 </script>
