@@ -26,6 +26,10 @@ export default new Router({
           component: CommercialIndex
         },
         {
+          path: 'good/:goodid',
+          component: GoodsDetail
+        },
+        {
           path: '/personalInfo/:id',
           component: PersonalInfo,
           children:[
@@ -65,10 +69,6 @@ export default new Router({
             {
               path: 'catagory/:catagory',
               component: Catagory
-            },
-            {
-              path: 'good/:goodid',
-              component: GoodsDetail
             }
           ]
         }

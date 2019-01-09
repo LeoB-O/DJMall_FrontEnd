@@ -27,6 +27,7 @@ export default {
   float: left;
   width: 15%;
   height: 100%;
+  flex-direction: column;
 }
 
 .index-content {
