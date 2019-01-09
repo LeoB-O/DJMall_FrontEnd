@@ -7,11 +7,15 @@
 
 <script>
 import Header from '@/components/Header'
+import axios from 'axios'
 
 export default {
   name: 'Main',
   components: {
     'Header': Header
+  },
+  created () {
+    console.log(axios.get('/login'))
   }
 }
 </script>
