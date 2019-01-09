@@ -47,7 +47,8 @@ export default {
 }
 
 .cart-item-img {
-  width: 50%;
+  width: auto;
+  height: 100%;
 }
 
 .cart-item-info {

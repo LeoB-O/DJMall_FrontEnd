@@ -28,6 +28,21 @@ export default new Router({
           component: PersonalInfo
         },
         {
+          path: '/signin',
+          name: 'SignIn',
+          component: SignIn
+        },
+        {
+          path: '/signup',
+          name: 'SignUp',
+          component: SignUp
+        },
+        {
+          path: '/cart',
+          name: 'Cart',
+          component: Cart
+        },
+        {
           path: '',
           component: Index,
           children: [
@@ -46,21 +61,6 @@ export default new Router({
           ]
         }
       ]
-    },
-    {
-      path: '/signin',
-      name: 'SignIn',
-      component: SignIn
-    },
-    {
-      path: '/signup',
-      name: 'SignUp',
-      component: SignUp
-    },
-    {
-      path: '/cart',
-      name: 'Cart',
-      component: Cart
     }
   ]
 })

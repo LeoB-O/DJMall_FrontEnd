@@ -9,12 +9,10 @@
 <script>
 export default {
   name: 'Content',
-  props: {
-    imgUrls: Array
-  },
   data () {
     return {
-      value1: 0
+      value1: 0,
+      imgUrls: ['/static/logo.png', '/static/logo.png']
     }
   }
 }

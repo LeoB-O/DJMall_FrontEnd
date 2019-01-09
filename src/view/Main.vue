@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header class="header" :is-login="true"></Header>
+    <Header class="header" :is-login="false" user-i-d="123"></Header>
     <router-view></router-view>
   </div>
 </template>
