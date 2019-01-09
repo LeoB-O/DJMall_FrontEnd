@@ -7,6 +7,7 @@
 
 <script>
 import GoodsInfo from '@/components/GoodsInfo'
+import axios from '@/axios'
 
 export default {
   name: 'Catagory',
@@ -17,6 +18,9 @@ export default {
     return {
       goods: [{id: '123', name: 'Nike Air VaporMax', price: 33, imageUrl: '/static/logo.png', description: 'Men\'s Shoes'}]
     }
+  },
+  created () {
+    axios.get('/goods/catagory?catagory=' + this.$route.params.catagory).then((response) => { console.log(response) })
   }
 }
 </script>

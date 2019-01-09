@@ -22,3 +22,7 @@ Mock.mock('/cart', 'get', {success: true,
 Mock.mock('/signup', 'post', function (options) {
   return options.body
 })
+
+Mock.mock(/\/goods\/catagory/, 'get', function (options) {
+  return options
+})
