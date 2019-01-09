@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="SignIn">
+    <div class="SignUp">
       <div class="Input">
-        <span>SignIn</span>
+        <span>SignUp</span>
       </div>
       <div class="Input">
         <Input v-model="username">
@@ -10,7 +10,7 @@
         </Input>
       </div>
       <div class="Input">
-        <Input v-model="password">
+        <Input v-model="password" type="password">
           <span slot="prepend">Password</span>
         </Input>
       </div>
@@ -28,45 +28,59 @@
 </template>
 
 <script>
-import axios from '@/axios'
+import axios from "@/axios";
+import { futimesSync } from "fs";
 
 export default {
-  name: 'SignUp',
-  data () {
+  name: "SignUp",
+  data() {
     return {
-      username: '',
-      password: '',
-      email: ''
+      username: "",
+      password: "",
+      email: ""
+    };
+  },
+  computed: {
+    isemailaddress: function() {
+      return /[\w]+(\.[\w]+)*@[\w]+(\.[\w])+/.test(this.email);
     }
   },
   methods: {
-    handleClick: function () {
-      axios.post('/signup', {
-        username: this.username,
-        password: this.password,
-        email: this.email
-      }).then((response) => {
-        console.log(response)
-      })
+    handleClick: function() {
+      if (this.isemailaddress) {
+        axios
+          .post("/signup", {
+            username: this.username,
+            password: this.password,
+            email: this.email
+          })
+          .then(response => {
+            console.log(response);
+          });
+      }
+      else
+      {
+        console.log('not email')
+      }
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .SignIn {
-    width: 350px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.SignUp {
+  width: 350px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .Input {
-    padding: 5px 5px;
-  }
+.Input {
+  padding: 5px 5px;
+}
 
-  .Button {
-    margin: 0 auto;
-  }
+.Button {
+  margin: 0 auto;
+}
 </style>

@@ -1,12 +1,13 @@
 <template>
   <div>
       <div class="box">
-           <Table :columns="columns1" :data="data1"></Table>
+           <Table :columns="columns1" :data="content" highlight-row></Table>
       </div>
   </div>
 </template>
 
 <script>
+import axios from '@/axios'
 export default {
   data() {
     return {
@@ -28,33 +29,16 @@ export default {
           key: "status"
         }
       ],
-      data1: [
-        {
-          id: "012398489",
-          price: 18,
-          status: "Cancel",
-          time: "2016-10-03"
-        },
-        {
-          id: "012398489",
-          price: 18,
-          status: "Cancel",
-          time: "2016-10-03"
-        },
-        {
-          id: "012398489",
-          price: 18,
-          status: "Cancel",
-          time: "2016-10-03"
-        },
-        {
-          id: "012398489",
-          price: 18,
-          status: "Cancel",
-          time: "2016-10-03"
-        }
+      content: [
       ]
     };
+  },
+  created(){
+      axios.get('/order',{params:{
+          ID:this.$route.params.id
+      }}).then((response)=>{
+          this.content=response.data.content
+      })
   }
 };
 </script>
