@@ -41,3 +41,24 @@ Mock.mock(/\/goods\/catagory/, 'get', function (options) {
     }
   }
 })
+
+Mock.mock(/\/goods\/store/, 'get', {
+  success: true,
+  data: {
+    goods: [{
+      id: '123',
+      name: 'Nike Air VaporMax',
+      price: 33,
+      imageUrl: '/static/logo.png',
+      description: 'Men\'s Shoes'
+    }]
+  }
+})
+
+Mock.mock(/\/store/, 'get', {
+  success: true,
+  data: {
+    name: 'NIKE 官方旗舰店',
+    menu: [{name: 'cloths', value: ['Men', 'Women']}, {name: '3C', value: ['Phone', 'Computer']}]
+  }
+})

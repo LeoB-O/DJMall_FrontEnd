@@ -1,21 +1,23 @@
 <template>
-<div>
-  <div class="com-content">
-    <div class="com-menu">
-      <MyMenu :contents="menu"></MyMenu>
-    </div>
-    <div class="com-goods">
-      <div class="com-name">{{name}}</div>
-      <GoodsInfo v-for="good in goods" class="goods-info" :imageUrl="good.imageUrl" :price="good.price" :name="good.name"
-                 :description="good.description" :id="good.id" :key="good.name"></GoodsInfo>
+  <div>
+    <div class="com-content">
+      <div class="com-menu">
+        <MyMenu :contents="menu"></MyMenu>
+      </div>
+      <div class="com-goods">
+        <div class="com-name">{{name}}</div>
+        <GoodsInfo v-for="good in goods" class="goods-info" :imageUrl="good.imageUrl" :price="good.price"
+                   :name="good.name"
+                   :description="good.description" :id="good.id" :key="good.name"></GoodsInfo>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 import GoodsInfo from '@/components/GoodsInfo'
 import MyMenu from '@/components/MyMenu'
+import axios from '@/axios'
 
 export default {
   name: 'CommercialIndex',
@@ -26,9 +28,18 @@ export default {
   data () {
     return {
       name: 'NIKE官方旗舰店',
-      menu: [{name: 'cloths', value: ['Men', 'Women']}, {name: '3C', value: ['Phone', 'Computer']}],
-      goods: [{id: '123', name: 'Nike Air VaporMax', price: 33, imageUrl: '/static/logo.png', description: 'Men\'s Shoes'}]
+      menu: [],
+      goods: []
     }
+  },
+  created () {
+    axios.get('/store?id=' + this.$route.params.commercialId).then((response) => {
+      this.name = response.data.name
+      this.menu = response.data.menu
+    })
+    axios.get('/goods/store?id=' + this.$route.params.commercialId).then((response) => {
+      this.goods = response.data.goods
+    })
   }
 }
 </script>
