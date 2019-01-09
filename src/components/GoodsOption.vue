@@ -29,12 +29,18 @@ export default {
 
 .goods-option {
   margin: 10px 0px;
+  flex-direction: column;
 }
 
 .attr-name {
   margin: 0px 10px;
   font-weight: bold;
   font-size: 24px;
+}
+
+.attr-values {
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .attr-value {

@@ -10,8 +10,8 @@
         {{typeArg}}
       </div>
       <div class="cart-item-action">
-        <Button type="warning">修改</Button>
-        <Button type="error">删除</Button>
+        <Button class="cart-item-action" type="warning">修改</Button>
+        <Button class="cart-item-action" type="error">删除</Button>
       </div>
     </div>
   </div>
@@ -44,11 +44,13 @@ export default {
 
 .cart-item {
   border: 1px solid lightgrey;
+  border-radius: 5px;
 }
 
 .cart-item-img {
   width: auto;
   height: 100%;
+  margin-right: 10px;
 }
 
 .cart-item-info {
@@ -67,9 +69,14 @@ export default {
   flex-direction: column;
 }
 
+.cart-item-action {
+  margin: 0px 5px;
+}
+
 .cart-item-price {
   color: #f77;
   font-size: 20px;
   justify-content: flex-end;
+  margin: 5px;
 }
 </style>

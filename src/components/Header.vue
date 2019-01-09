@@ -1,7 +1,7 @@
 <template>
   <Menu class="header-menu" mode="horizontal" theme="light" active-name="1">
     <Icon size="30" class="header-icon" type="logo-bitcoin" />
-    <div class="header-title">DJ MALL</div>
+    <router-link to="/" class="header-title">DJ MALL</router-link>
     <Search class="header-search"></Search>
     <MenuItem v-if="isLogin" name="1" :to="'/personalInfo/'+userID">
       <Icon type="ios-paper" />
@@ -52,6 +52,7 @@ export default {
   position: absolute;
   left: 40px;
   font-size: 36px;
+  color: #000;
 }
 
 .header-menu {

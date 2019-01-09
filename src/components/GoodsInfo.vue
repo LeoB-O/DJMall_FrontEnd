@@ -1,8 +1,8 @@
 <template>
 <div class="goods-info">
-  <div class="goods-info-img">
+  <router-link :to="'/good/' + id" class="goods-info-img">
     <img :src="imageUrl" />
-  </div>
+  </router-link>
   <div class="goods-info-details">
     <div class="goods-info-name">{{name}}</div>
     <div class="goods-info-descr">{{description}}</div>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+// ID
 // image-url
 // name
 // price
@@ -19,6 +20,7 @@
 export default {
   name: 'GoodsInfo',
   props: {
+    id: String,
     imageUrl: String,
     name: String,
     price: Number,
