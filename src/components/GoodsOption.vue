@@ -2,8 +2,8 @@
 <div class="goods-option">
   <div class="attr-name">{{name}}:</div>
   <div class="attr-values">
-    <div class="attr-value" v-for="value in values" :key="value">
-      <div>{{value}}</div>
+    <div :class="{active: option.selected}" class="attr-value" v-for="option in options" :key="option.index" @click="handleClick(option.index)">
+      <div>{{option.value}}</div>
     </div>
   </div>
 </div>
@@ -17,6 +17,21 @@ export default {
   props: {
     name: String,
     values: Array
+  },
+  data () {
+    return {
+      options: []
+    }
+  },
+  created () {
+    this.options = this.values.map((current, index) => { return {value: current, index: index, selected: false} })
+  },
+  methods: {
+    handleClick: function (index) {
+      this.options = this.options.map((current) => { return {value: current.value, index: current.index, selected: false} })
+      this.options[index].selected = true
+      console.log('wtfff???')
+    }
   }
 }
 </script>
@@ -49,5 +64,9 @@ export default {
   padding: 5px 20px;
   border: lightgrey solid 1px;
   border-radius: 5px;
+}
+
+.active {
+  background: orange;
 }
 </style>
