@@ -2,15 +2,13 @@
   <div class="layout">
     <Layout>
       <div class="head">
-        <div id="avatar" class="avatar">
-          Avadar
-        </div>
+        <div id="avatar" class="avatar">Avadar</div>
         <div class="UserName">
           <span class="Name">{{username}}</span>
         </div>
         <div class="link">
-            <Button type="text" size="large">Order</Button>
-            <Button type="text" size="large">EditInfo</Button>
+          <Button type="text" size="large" @click="link2order">Order</Button>
+          <Button type="text" size="large" @click="link2pinfo">EditInfo</Button>
         </div>
       </div>
       <Content class="content">
@@ -21,26 +19,40 @@
 </template>
 
 <script>
-import axios from '@/axios'
+import axios from "@/axios";
 export default {
-  name: 'PersonalInfo',
-  data(){
-    return{
-      tabs:'',
-      username:'',
-      avdarurl:''
-    }
+  name: "PersonalInfo",
+  data() {
+    return {
+      tabs: "",
+      username: "",
+      avdarurl: ""
+    };
   },
-  created(){
-    axios.get('/personalinfo',{params:{
-      ID:this.$route.params.id
-    }}).then((response)=>{
-      this.username=response.data.username
-      this.avdarurl=response.data.avdarurl
-      console.log(this.username)
-    })
+  created() {
+    axios
+      .get("/personalinfo", {
+        params: {
+          ID: this.$route.params.id
+        }
+      })
+      .then(response => {
+        this.username = response.data.username;
+        this.avdarurl = response.data.avdarurl;
+        console.log(this.username);
+      });
+  },
+  methods: {
+    link2order: function() {
+      this.$router.push("/personalinfo/" + this.$route.params.id + "/order");
+    },
+    link2pinfo: function() {
+      this.$router.push(
+        "/personalinfo/" + this.$route.params.id + "/editpinfo"
+      );
+    }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -52,20 +64,20 @@ export default {
   overflow: hidden;
 }
 
-.head{
+.head {
   height: 200px;
 }
 
-.avatar{
+.avatar {
   margin: 20px auto;
   width: 100px;
   height: 100px;
-  background:#d7dde4;
+  background: #d7dde4;
 }
-.link{
+.link {
   margin-top: 20px;
 }
-.Name{
+.Name {
   font-size: 20px;
 }
 </style>

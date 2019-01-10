@@ -57,10 +57,8 @@ export default {
           .then(response => {
             console.log(response);
           });
-      }
-      else
-      {
-        console.log('not email')
+      } else {
+        console.log("not email");
       }
     }
   }

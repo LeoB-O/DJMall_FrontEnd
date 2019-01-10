@@ -20,7 +20,7 @@
           </div>
         </TabPane>
         <TabPane label="Address" name="address">
-          <Addressitem :addressdetail=addetail :Administrativeaddress=adad :phonenumber=pn></Addressitem>
+          <Addressitem :addressdetail="addetail" :Administrativeaddress="adad" :phonenumber="pn"></Addressitem>
         </TabPane>
       </Tabs>
     </div>

@@ -44,12 +44,10 @@ export default {
         })
         .then(response => {
           this.right = response.data.right;
-          if(this.right)
-          {
-            console.log('ok')
-          }
-          else{
-            console.log('error')
+          if (this.right) {
+            console.log("ok");
+          } else {
+            console.log("error");
           }
         });
     }

@@ -1,13 +1,13 @@
 <template>
   <div>
-      <div class="box">
-           <Table :columns="columns1" :data="content" highlight-row></Table>
-      </div>
+    <div class="box">
+      <Table :columns="columns1" :data="content" highlight-row></Table>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from '@/axios'
+import axios from "@/axios";
 export default {
   data() {
     return {
@@ -29,16 +29,19 @@ export default {
           key: "status"
         }
       ],
-      content: [
-      ]
+      content: []
     };
   },
-  created(){
-      axios.get('/order',{params:{
-          ID:this.$route.params.id
-      }}).then((response)=>{
-          this.content=response.data.content
+  created() {
+    axios
+      .get("/order", {
+        params: {
+          ID: this.$route.params.id
+        }
       })
+      .then(response => {
+        this.content = response.data.content;
+      });
   }
 };
 </script>
