@@ -1,4 +1,4 @@
-let mock_util = {
+let mockUtil = {
   genReturn: function (success, data) {
     return {
       success: !!success,
@@ -6,3 +6,5 @@ let mock_util = {
     }
   }
 }
+
+export default mockUtil
