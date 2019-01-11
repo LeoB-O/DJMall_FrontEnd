@@ -10,9 +10,6 @@
             <Input v-model="email" style="margin:5px;">
               <span slot="prepend">Email</span>
             </Input>
-            <Input v-model="date" type="date" style="margin:5px;">
-              <span slot="prepend">birthday</span>
-            </Input>
             <Input v-model="password" type="password" style="margin:5px;">
               <span slot="prepend">Password</span>
             </Input>
@@ -20,7 +17,15 @@
           </div>
         </TabPane>
         <TabPane label="Address" name="address">
-          <Addressitem :addressdetail="addetail" :Administrativeaddress="adad" :phonenumber="pn"></Addressitem>
+          <Addressitem
+            v-for="ad in addressinfo"
+            v-on:removeaddress="Remove"
+            :key="ad.id"
+            :addressdetail="ad.addetail"
+            :Administrativeaddress="ad.subad"
+            :phonenumber="ad.phonenumber"
+            :id="ad.id"
+          ></Addressitem>
         </TabPane>
       </Tabs>
     </div>
@@ -41,9 +46,8 @@ export default {
       email: "",
       date: "",
       password: "",
-      addetail: "",
-      adad: "",
-      pn: ""
+      address:[],
+      addressinfo:[]
     };
   },
   created() {
@@ -56,7 +60,6 @@ export default {
       .then(response => {
         this.username = response.data.username;
         this.email = response.data.email;
-        this.date = response.data.date;
         this.password = response.data.password;
       }),
       axios
@@ -66,9 +69,8 @@ export default {
           }
         })
         .then(response => {
-          this.addetail = response.data.addetail;
-          this.adad = response.data.adad;
-          this.pn = response.data.pn;
+          this.address=response.data.address
+          this.GetAbbr
         });
   },
   methods: {
@@ -84,7 +86,36 @@ export default {
         .then(response => {
           console.log(response);
         });
+    },
+    Remove:function(data){
+      axios.post("/deletead",{
+        id:data,
+        username:this.username
+      })
+      .then(reponse=>{
+        if(reponse.body.ok)
+        {
+          console.log('ok')
+        }
+        else
+        {
+          console.log('error')
+        }
+      })
     }
+  },
+  computed:{
+    GetAbbr:function(){
+      for(let ad in this.address)
+      {
+        this.addressinfo.push({
+          id:this.address[ad]._id,
+          addetail:this.address[ad].detail,
+          subad:this.address[ad].province+' '+this.address[ad].city+' '+this.address[ad].district,
+          phonenumber:this.address[ad].phone
+        })
+      }
+    },
   }
 };
 </script>

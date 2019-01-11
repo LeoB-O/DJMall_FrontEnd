@@ -11,19 +11,14 @@
       </div>
       <div class="right">
         <Button type="primary" @click="edit = true">修改</Button>
+        <Button type="error" @click="Remove">删除</Button>
       </div>
     </div>
     <Modal v-model="edit" title="Edit Address" @on-ok="Editad">
       <div>
-        <Select v-model="province">
-          <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-        </Select>
-        <Select v-model="city">
-          <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-        </Select>
-        <Select v-model="region">
-          <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-        </Select>
+        <Input v-model="province" placeholder="Province"></Input>
+        <Input v-model="city" placeholder="City"></Input>
+        <Input v-model="district">District</Input>
         <Input v-model="address" placeholder="detail address"></Input>
       </div>
     </Modal>
@@ -31,59 +26,40 @@
 </template>
 
 <script>
-import axios from '@/axios'
+import axios from "@/axios";
 export default {
   name: "Addressitem",
   props: {
+    id:String,
     phonenumber: String,
     Administrativeaddress: String,
     addressdetail: String
   },
   data() {
     return {
+      sid:this.id,
       edit: false,
-      province:'',
-      city:'',
-      region:'',
-      address:'',
-      cityList: [
-        {
-          value: "New York",
-          label: "New York"
-        },
-        {
-          value: "London",
-          label: "London"
-        },
-        {
-          value: "Sydney",
-          label: "Sydney"
-        },
-        {
-          value: "Ottawa",
-          label: "Ottawa"
-        },
-        {
-          value: "Paris",
-          label: "Paris"
-        },
-        {
-          value: "Canberra",
-          label: "Canberra"
-        }
-      ]
+      province: "",
+      city: "",
+      district: "",
+      address: "",
     };
   },
-  methods:{
-    Editad:function(){
-      axios.post('/editaddress',{
-        province:this.province,
-        city:this.city,
-        region:this.region,
-        address:this.address
-      }).then((response)=>{
-        console.log(response)
-      })
+  methods: {
+    Editad: function() {
+      axios
+        .post("/editaddress", {
+          province: this.province,
+          city: this.city,
+          region: this.region,
+          address: this.address
+        })
+        .then(response => {
+          console.log(response);
+        });
+    },
+    Remove: function() {
+      this.$emit("removeaddress", this.sid);
     }
   }
 };
@@ -104,8 +80,10 @@ export default {
   width: 400px;
   height: 80px;
   background: rgb(230, 220, 220);
-  margin: 0 auto;
-  border:3px black;
+  margin: 10px 60px;
+  border: 3px black;
+  float: left;
+  border-radius: 10px;
 }
 </style>
 

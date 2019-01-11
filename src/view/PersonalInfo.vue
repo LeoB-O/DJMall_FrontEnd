@@ -26,7 +26,7 @@ export default {
     return {
       tabs: "",
       username: "",
-      avdarurl: ""
+      avatarurl: ""
     };
   },
   created() {
@@ -38,7 +38,7 @@ export default {
       })
       .then(response => {
         this.username = response.data.username;
-        this.avdarurl = response.data.avdarurl;
+        this.avatarurl = response.data.avatar;
         console.log(this.username);
       });
   },

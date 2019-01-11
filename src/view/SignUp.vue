@@ -55,7 +55,14 @@ export default {
             email: this.email
           })
           .then(response => {
-            console.log(response);
+            if(response.data.ok)
+            {
+              this.$Message.info('SignUp Success')
+            }
+            else
+            {
+              this.$$Message.info('Username or Email has been Used')
+            }
           });
       } else {
         console.log("not email");
