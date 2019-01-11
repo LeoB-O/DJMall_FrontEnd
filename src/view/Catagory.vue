@@ -20,7 +20,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/goods/catagory?catagory=' + this.$route.params.catagory).then((response) => {
+    axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
       this.goods = response.data.goods
     })
   },
