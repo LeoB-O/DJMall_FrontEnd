@@ -64,7 +64,13 @@ Mock.mock(/\/store/, 'get', {
   success: true,
   data: {
     name: 'NIKE 官方旗舰店',
-    menu: [{name: 'cloths', value: ['Men', 'Women']}, {name: '3C', value: ['Phone', 'Computer']}]
+    menu: [{
+      name: 'cloths',
+      value: ['Men', 'Women']
+    }, {
+      name: '3C',
+      value: ['Phone', 'Computer']
+    }]
   }
 })
 
@@ -82,7 +88,10 @@ Mock.mock(/\/good/, 'get', {
     imgUrls: ['/static/logo.png', '/static/logo.png'],
     value1: 0,
     description: 'Nike Air VaporMax 2019 男子运动鞋采用弹性梭织材料，妥善包覆双足，塑就出众结构感和强力支撑的迈步体验。<br />足底搭载 Air Max 缓震配置，轻盈感和柔韧性出众，塑就弹力十足的出众脚感，宛如云端畅跑。',
-    options: [{name: 'size', values: [37, 38, 39.40, 41, 42, 43, 44]}, {
+    options: [{
+      name: 'size',
+      values: [37, 38, 39.40, 41, 42, 43, 44]
+    }, {
       name: 'color',
       values: ['white', 'yellow', 'blue']
     }]
@@ -92,7 +101,13 @@ Mock.mock(/\/good/, 'get', {
 Mock.mock(/\/catagories/, 'get', {
   success: true,
   data: {
-    menu: [{name: 'cloths', value: ['Men', 'Women']}, {name: '3C', value: ['Phone', 'Computer']}]
+    menu: [{
+      name: 'cloths',
+      value: ['Men', 'Women']
+    }, {
+      name: '3C',
+      value: ['Phone', 'Computer']
+    }]
   }
 })
 
@@ -125,29 +140,29 @@ Mock.mock('/order', 'get', {
   success: true,
   data: {
     content: [{
-      id: '012398489',
-      price: 18,
-      status: 'Cancel',
-      time: '2016-10-03'
-    },
-    {
-      id: '012398489',
-      price: 18,
-      status: 'Cancel',
-      time: '2016-10-03'
-    },
-    {
-      id: '012398489',
-      price: 18,
-      status: 'Cancel',
-      time: '2016-10-03'
-    },
-    {
-      id: '012398489',
-      price: 18,
-      status: 'Cancel',
-      time: '2016-10-03'
-    }
+        id: '012398489',
+        price: 18,
+        status: 'Cancel',
+        time: '2016-10-03'
+      },
+      {
+        id: '012398489',
+        price: 18,
+        status: 'Cancel',
+        time: '2016-10-03'
+      },
+      {
+        id: '012398489',
+        price: 18,
+        status: 'Cancel',
+        time: '2016-10-03'
+      },
+      {
+        id: '012398489',
+        price: 18,
+        status: 'Cancel',
+        time: '2016-10-03'
+      }
     ]
   }
 })
@@ -159,13 +174,35 @@ Mock.mock('/editinfo', 'post', function (options) {
 Mock.mock('/getaddress', 'get', {
   success: true,
   data: {
-    username: 'Zeo',
-    email: '123@test.com',
-    date: '1998-02-24',
-    password: '1111',
-    addetail: 'ddas',
-    adad: 'dasdada',
-    pn: '17625113975'
+    address: [{
+        _id: '1',
+        province: "jiangsu",
+        city: "zhenjiang",
+        district: "jingkouqu",
+        detail: "jiangsudaxue",
+        phone: "17625113975",
+        name: "yangziyao"
+      },
+      {
+        _id: '2',
+        province: "jiangsu",
+        city: "zhenjiang",
+        district: "jingkouqu",
+        detail: "jiangsudaxue",
+        phone: "17625113975",
+        name: "yangziyao"
+      },
+      {
+        _id: '3',
+        province: "jiangsu",
+        city: "zhenjiang",
+        district: "jingkouqu",
+        detail: "jiangsudaxue",
+        phone: "17625113975",
+        name: "yangziyao"
+      }
+
+    ]
   }
 })
 Mock.mock('/editaddress', 'post', function (options) {
