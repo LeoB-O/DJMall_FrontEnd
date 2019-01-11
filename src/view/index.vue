@@ -20,7 +20,7 @@ export default {
     }
   },
   created () {
-    axios.get('/catagories').then((response) => {
+    axios.get('/categories').then((response) => {
       this.menu = response.data.menu
     })
   }

@@ -18,7 +18,7 @@ export default {
     }
   },
   created () {
-    axios.get('/indexImg').then((response) => {
+    axios.get('/indexImages').then((response) => {
       this.imgUrls = response.data.imgUrls
     })
   }

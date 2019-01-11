@@ -10,7 +10,7 @@ Vue.config.productionTip = false
 
 Vue.use(iView)
 
-require('./mock')
+// require('./mock')
 
 /* eslint-disable no-new */
 new Vue({
