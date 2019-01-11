@@ -4,7 +4,7 @@
       <template slot="title">
         {{content.name}}
       </template>
-      <MenuItem :to="'/catagory/'+item" :name="item" v-for="item in content.value" :key="item">{{item}}</MenuItem>
+      <MenuItem :to="'/catagory/'+content.name+'-'+item" :name="item" v-for="item in content.value" :key="item">{{item}}</MenuItem>
     </Submenu>
   </Menu>
 </template>
