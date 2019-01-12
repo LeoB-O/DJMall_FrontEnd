@@ -11,8 +11,8 @@
       <div class="good-info">
         <div class="good-name">{{name}}</div>
         <GoodsOption v-for="option in options" class="good-option" :name="option.name" :values="option.values"
-                     :key="option.name"></GoodsOption>
-        <Button type="warning" class="good-submit">加入购物车</Button>
+                     :key="option.name" @selectChange="handleChange"></GoodsOption>
+        <Button type="warning" class="good-submit" @click="handleClick">加入购物车</Button>
       </div>
     </div>
     <div class="good-bottom">
@@ -36,7 +36,8 @@ export default {
       imgUrls: [],
       value1: 0,
       description: '',
-      options: []
+      options: [],
+      select: {}
     }
   },
   created () {
@@ -46,6 +47,27 @@ export default {
       this.description = response.data.description
       this.options = response.data.options
     })
+  },
+  methods: {
+    handleChange: function (s) {
+      this.select[s.name] = s.value
+      console.log(this.select)
+    },
+    handleClick: function () {
+      let selects = []
+      Object.keys(this.select).forEach((key) => {
+        console.log(key)
+        console.log(this.select[key])
+        selects.push({attrName: key, attrValue: this.select[key]})
+        console.log(selects)
+      })
+      let payload = {
+        id: this.$route.params.goodid,
+        options: selects,
+        amount: 1
+      }
+      axios.put('/api/cart', payload)
+    }
   }
 }
 </script>

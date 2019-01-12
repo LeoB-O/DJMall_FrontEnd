@@ -20,7 +20,8 @@ export default {
   },
   data () {
     return {
-      options: []
+      options: [],
+      selected: {name: this.name, value: ''}
     }
   },
   created () {
@@ -31,6 +32,9 @@ export default {
       this.options = this.options.map((current) => { return {value: current.value, index: current.index, selected: false} })
       this.options[index].selected = true
       console.log('wtfff???')
+      this.selected.value = this.options[index].value
+      console.log(this.selected)
+      this.$emit('selectChange', this.selected)
     }
   }
 }
