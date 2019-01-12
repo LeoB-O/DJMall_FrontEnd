@@ -43,7 +43,12 @@ export default {
         })
         .then(response => {
           if (response.success == false) {
-            this.$router.push('/signin')
+            // this.$router.push('/signin')
+            this.$Notice.open({
+                    title: 'Notification',
+                    desc: 'Username or Password Errpr'
+                });
+            
           } else {
             this.$emit('login')
             this.$router.push('/')
