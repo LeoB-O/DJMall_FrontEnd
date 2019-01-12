@@ -1,7 +1,7 @@
 <template>
   <div>
     <GoodsInfo v-for="good in goods" class="goods-info" :imageUrl="good.imageUrl" :price="good.price" :name="good.name"
-               :description="good.description" :id="good.id" :key="good.name"></GoodsInfo>
+               :description="good.description" :merchantID="good.merchantID" :id="good.id" :key="good.name"></GoodsInfo>
   </div>
 </template>
 
@@ -44,10 +44,12 @@ export default {
   * {
     width: 100%;
     height: 100%;
+    flex-wrap: wrap;
   }
 
   .goods-info {
     width: 20%;
     height: 40%;
+    flex-wrap: nowrap;
   }
 </style>

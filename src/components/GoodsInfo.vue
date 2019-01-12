@@ -7,11 +7,13 @@
     <div class="goods-info-name">{{name}}</div>
     <div class="goods-info-descr">{{descr}}</div>
     <div class="goods-info-price">${{price}}</div>
+    <router-link :to="'/commercial/'+merchantID">{{merchantName}}</router-link>
   </div>
 </div>
 </template>
 
 <script>
+import axios from '../axios'
 // ID
 // image-url
 // name
@@ -24,16 +26,28 @@ export default {
     imageUrl: String,
     name: String,
     price: Number,
-    description: String
+    description: String,
+    merchantID: String
+  },
+  data () {
+    return {
+      merchantName: ''
+    }
   },
   computed: {
     descr: function () {
       if (this.description.length < 15) {
         return this.description
       } else {
-        return this.description.slice(0, 15) + '...';
+        return this.description.slice(0, 15) + '...'
       }
     }
+  },
+  created () {
+    let that = this
+    axios.get('/store?id=' + this.merchantID).then(function (response) {
+      that.merchantName = response.data.name
+    })
   }
 }
 </script>
