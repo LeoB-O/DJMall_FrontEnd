@@ -14,6 +14,7 @@
         <GoodsOption v-for="option in options" class="good-option" :name="option.name" :values="option.values"
                      :key="option.name" @selectChange="handleChange"></GoodsOption>
         <Button type="warning" class="good-submit" @click="handleClick">加入购物车</Button>
+        <Button type="info" class="good-submit" @click="handleChat">与商家聊天</Button>
       </div>
     </div>
     <div class="good-bottom">
@@ -70,6 +71,9 @@ export default {
         amount: 1
       }
       axios.put('/api/cart', payload)
+    },
+    handleChat: function () {
+      console.log('chat');
     }
   }
 }
