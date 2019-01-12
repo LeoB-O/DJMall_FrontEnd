@@ -10,6 +10,7 @@
       </div>
       <div class="good-info">
         <div class="good-name">{{name}}</div>
+        <div style="padding-left: 10%; color: darkorange;">${{price}}</div>
         <GoodsOption v-for="option in options" class="good-option" :name="option.name" :values="option.values"
                      :key="option.name" @selectChange="handleChange"></GoodsOption>
         <Button type="warning" class="good-submit" @click="handleClick">加入购物车</Button>
@@ -34,6 +35,7 @@ export default {
     return {
       name: '',
       imgUrls: [],
+      price: 0,
       value1: 0,
       description: '',
       options: [],
@@ -46,6 +48,7 @@ export default {
       this.imgUrls = response.data.imgUrls
       this.description = response.data.description
       this.options = response.data.options
+      this.price = response.data.price
     })
   },
   methods: {

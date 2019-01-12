@@ -33,50 +33,50 @@
 </template>
 
 <script>
-import Addressitem from "@/components/Addressitem";
-import axios from "@/axios";
+import Addressitem from '@/components/Addressitem'
+import axios from '@/axios'
 export default {
   components: {
     Addressitem
   },
-  data() {
+  data () {
     return {
-      select: "",
-      username: "",
-      email: "",
-      date: "",
-      password: "",
-      address:[],
-      addressinfo:[]
-    };
+      select: '',
+      username: '',
+      email: '',
+      date: '',
+      password: '',
+      address: [],
+      addressinfo: []
+    }
   },
-  created() {
+  created () {
     axios
-      .get("/personalinfo", {
+      .get('/personalinfo', {
         params: {
           ID: this.$route.params.id
         }
       })
       .then(response => {
-        this.username = response.data.username;
-        this.email = response.data.email;
-        this.password = response.data.password;
+        this.username = response.data.username
+        this.email = response.data.email
+        this.password = response.data.password
       }),
-      axios
-        .get("/getaddress", {
-          params: {
-            id: this.$route.params.id
-          }
-        })
-        .then(response => {
-          this.address=response.data.address
-          this.GetAbbr
-        });
+    axios
+      .get('/getaddress', {
+        params: {
+          id: this.$route.params.id
+        }
+      })
+      .then(response => {
+        this.address = response.data.address
+        this.GetAbbr
+      })
   },
   methods: {
-    Commit: function() {
+    Commit: function () {
       axios
-        .post("/editinfo", {
+        .post('/editinfo', {
           id: this.$route.params.id,
           username: this.username,
           email: this.email,
@@ -84,42 +84,37 @@ export default {
           password: this.password
         })
         .then(response => {
-          console.log(response);
-        });
+          console.log(response)
+        })
     },
-    Remove:function(data){
-      axios.post("/deletead",{
-        id:data,
-        username:this.username
+    Remove: function (data) {
+      axios.post('/deletead', {
+        id: data,
+        username: this.username
       })
-      .then(reponse=>{
-        if(reponse.body.ok)
-        {
-          console.log('ok')
-        }
-        else
-        {
-          console.log('error')
-        }
-      })
+        .then(reponse => {
+          if (reponse.body.ok) {
+            console.log('ok')
+          } else {
+            console.log('error')
+          }
+        })
     }
   },
-  computed:{
-    GetAbbr:function(){
-      for(let ad in this.address)
-      {
+  computed: {
+    GetAbbr: function () {
+      for (let ad in this.address) {
         this.addressinfo.push({
-          id:this.address[ad]._id,
-          addetail:this.address[ad].detail,
-          subad:this.address[ad].province+' '+this.address[ad].city+' '+this.address[ad].district,
-          phonenumber:this.address[ad].phone
+          id: this.address[ad]._id,
+          addetail: this.address[ad].detail,
+          subad: this.address[ad].province + ' ' + this.address[ad].city + ' ' + this.address[ad].district,
+          phonenumber: this.address[ad].phone
         })
       }
-    },
+    }
   }
-};
+}
 </script>
-
 
 <style scoped>
 .box {
