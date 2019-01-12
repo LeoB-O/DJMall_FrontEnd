@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header class="header" :is-login="isLogin" :user-i-d="userID"></Header>
-    <router-view></router-view>
+    <router-view @login="handleLogin"></router-view>
   </div>
 </template>
 
@@ -21,10 +21,16 @@ export default {
     }
   },
   created () {
-    axios.get('/user').then((response) => {
+    axios.get('/api/user').then((response) => {
       this.isLogin = !!response.success
       this.userID = response.success ? response.data.id : null
     })
+  },
+  methods: {
+    handleLogin: function () {
+      this.isLogin = true
+      console.log('login!!!!')
+    }
   }
 }
 </script>

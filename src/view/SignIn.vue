@@ -22,37 +22,36 @@
 </template>
 
 <script>
-import axios from "@/axios";
+import axios from '@/axios'
 
 export default {
-  name: "SignIn",
-  data() {
+  name: 'SignIn',
+  data () {
     return {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       right: false
-    };
+    }
   },
   computed: {},
   methods: {
-    checkPassword: function() {
+    checkPassword: function () {
       axios
-        .get("/signin", {
-          params: {
-            UserName: this.username
-          }
+        .post('/login', {
+          username: this.username,
+          password: this.password
         })
         .then(response => {
-          this.right = response.data.right;
-          if (this.right) {
-            console.log("ok");
+          if (response.success == false) {
+            this.$router.push('/signin')
           } else {
-            console.log("error");
+            this.$emit('login')
+            this.$router.push('/')
           }
-        });
+        })
     }
   }
-};
+}
 </script>
 
 <style scoped>

@@ -68,5 +68,6 @@ export default {
 
 .active {
   background: orange;
+  color: #fff;
 }
 </style>

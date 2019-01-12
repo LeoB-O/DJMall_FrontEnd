@@ -1,7 +1,7 @@
 <template>
-  <Carousel autoplay v-model="value1" loop>
-    <CarouselItem v-for="imgUrl in imgUrls" :key="imgUrl">
-      <img :src="imgUrl" />
+  <Carousel style="height: 90%; width: 90%; margin-left: 5%;" autoplay v-model="value1" loop>
+    <CarouselItem style="height: 100%; overflow: hidden;" v-for="imgUrl in imgUrls" :key="imgUrl">
+      <img style="object-fit: cover; overflow: hidden" :src="imgUrl" />
     </CarouselItem>
   </Carousel>
 </template>
@@ -26,5 +26,8 @@ export default {
 </script>
 
 <style scoped>
-
+* {
+  width: 100%;
+  height: 100%;
+}
 </style>

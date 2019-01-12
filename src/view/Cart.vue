@@ -1,6 +1,7 @@
 <template>
   <div class="cart">
     <div class="cart-items">
+      <div v-if="itemNum==0" style="font-size: 24px;">购物车为空</div>
       <CartItem v-for="cartItem in cartItems" class="cart-item" :name="cartItem.name" :price="cartItem.price"
                 :amount="cartItem.amount" :imgUrl="cartItem.imgUrl" :key="cartItem.name"
                 :type-args="cartItem.typeArgs"></CartItem>
@@ -36,11 +37,11 @@ export default {
       return this.cartItems.length
     },
     total: function () {
-      return this.cartItems.reduce((accumulate, currentValue) => accumulate.price + currentValue.price)
+      return this.cartItems.reduce((accumulate, currentValue) => accumulate.price + currentValue.price, 0)
     }
   },
   created () {
-    axios.get('/cart').then((response) => { this.cartItems = response.data.cartItems })
+    axios.get('/api/cart').then((response) => { this.cartItems = response.data.cartItems })
   }
 }
 </script>
@@ -59,6 +60,8 @@ export default {
     margin: 5%;
     flex-direction: column;
     width: 70%;
+    /*border: solid 1px;*/
+    /*height: auto;*/
   }
 
   .cart-item {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GoodsInfo v-for="good in goods" class="goods-info" :imageUrl="good.imageUrl" :price="99" :name="good.name"
+    <GoodsInfo v-for="good in goods" class="goods-info" :imageUrl="good.imageUrl" :price="good.price" :name="good.name"
                :description="good.description" :id="good.id" :key="good.name"></GoodsInfo>
   </div>
 </template>
@@ -20,13 +20,19 @@ export default {
     }
   },
   mounted () {
-    axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
-      this.goods = response.data.goods
-    })
+    if (this.$route.query.search) {
+      axios.get('/search?search=' + this.$route.query.search).then((response) => {
+        this.goods = response.goods
+      })
+    } else {
+      axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
+        this.goods = response.data.goods
+      })
+    }
   },
   watch: {
     '$route' (to, from) {
-      axios.get('/goods/catagory?catagory=' + this.$route.params.catagory).then((response) => {
+      axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
         this.goods = response.data.goods
       })
     }

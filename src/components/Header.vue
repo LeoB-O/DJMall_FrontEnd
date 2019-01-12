@@ -1,22 +1,30 @@
 <template>
   <Menu class="header-menu" mode="horizontal" theme="light" active-name="1">
-    <Icon size="30" class="header-icon" type="logo-bitcoin" />
+    <Icon size="30" class="header-icon" type="logo-bitcoin"/>
     <router-link to="/" class="header-title">DJ MALL</router-link>
-    <Search class="header-search"></Search>
+    <AutoComplete
+      class="header-search"
+      icon="ios-search"
+      placeholder="Search"
+      :data="data"
+      v-model="value"
+      @on-search="handleSearch"
+      @keyup.native.enter="handleSubmit"
+    ></AutoComplete>
     <MenuItem v-if="isLogin" name="1" :to="'/personalInfo/'+userID">
-      <Icon type="ios-paper" />
+      <Icon type="ios-paper"/>
       个人中心
     </MenuItem>
     <MenuItem v-if="!isLogin" name="2" to="/signin">
-      <Icon type="ios-paper" />
+      <Icon type="ios-paper"/>
       登录
     </MenuItem>
     <MenuItem v-if="!isLogin" name="3" to="/signup">
-      <Icon type="ios-people" />
+      <Icon type="ios-people"/>
       注册
     </MenuItem>
     <MenuItem name="4" to="/cart">
-      <Icon type="ios-construct" />
+      <Icon type="ios-construct"/>
       购物车
     </MenuItem>
   </Menu>
@@ -33,30 +41,50 @@ export default {
   },
   components: {
     Search
+  },
+  data () {
+    return {
+      value: '',
+      data: []
+    }
+  },
+  methods: {
+    handleSearch: function (value) {
+      this.data = !value ? [] : [
+        value,
+        value + value,
+        value + value + value
+      ]
+    },
+    handleSubmit: function () {
+      console.log('SUBMIT!')
+      this.$router.push('/catagory/search?search=' + this.value)
+    }
   }
 }
 </script>
 
 <style scoped>
-.header-icon {
-  padding: 15px 5px;
-  position: absolute;
-  left: 0px;
-}
+  .header-icon {
+    padding: 15px 5px;
+    position: absolute;
+    left: 0px;
+  }
 
-.header-search {
-  padding: 10px 5px;
-}
+  .header-search {
+    padding: 15px 5px;
+    width: 200px;
+  }
 
-.header-title {
-  position: absolute;
-  left: 40px;
-  font-size: 36px;
-  color: #000;
-}
+  .header-title {
+    position: absolute;
+    left: 40px;
+    font-size: 36px;
+    color: #000;
+  }
 
-.header-menu {
-  display: flex;
-  justify-content: flex-end;
-}
+  .header-menu {
+    display: flex;
+    justify-content: flex-end;
+  }
 </style>
