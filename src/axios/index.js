@@ -23,9 +23,9 @@ axios.interceptors.response.use(
   })
 
 export default {
-  get: function (url) {
+  get: function (url,params) {
     return new Promise((resolve, reject) => {
-      axios.get(url).then(response => {
+      axios.get(url,params).then(response => {
         resolve(response.data)
       }).catch((error) => reject(error))
     })

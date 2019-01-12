@@ -14,23 +14,27 @@
         <GoodsOption v-for="option in options" class="good-option" :name="option.name" :values="option.values"
                      :key="option.name" @selectChange="handleChange"></GoodsOption>
         <Button type="warning" class="good-submit" @click="handleClick">加入购物车</Button>
-        <Button type="info" class="good-submit" @click="handleChat">与商家聊天</Button>
+        <Button type="info" class="good-submit" @click="handleClick1">与商家聊天</Button>
       </div>
+    <ChatRoom :modal="modal1" :Id="merchantId"></ChatRoom>
     </div>
     <div class="good-bottom">
       <div class="good-descr"><div v-html="description"></div></div>
     </div>
+
   </div>
 </template>
 
 <script>
 import GoodsOption from '@/components/GoodsOption'
 import axios from '@/axios'
+import ChatRoom from '@/components/ChatRoom'
 
 export default {
   name: 'GoodsDetail',
   components: {
-    GoodsOption
+    GoodsOption,
+    ChatRoom
   },
   data () {
     return {
@@ -40,7 +44,10 @@ export default {
       value1: 0,
       description: '',
       options: [],
-      select: {}
+      select: {},
+      modal1:false,
+      chatcontent:'',
+      merchantId:''
     }
   },
   created () {
@@ -50,6 +57,7 @@ export default {
       this.description = response.data.description
       this.options = response.data.options
       this.price = response.data.price
+      this.merchantId=response.data.merchantId
     })
   },
   methods: {
@@ -71,6 +79,9 @@ export default {
         amount: 1
       }
       axios.put('/api/cart', payload)
+    },
+    handleClick1:function(){
+      this.modal1=true
     },
     handleChat: function () {
       console.log('chat');
