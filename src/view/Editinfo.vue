@@ -80,7 +80,6 @@ export default {
           id: this.$route.params.id,
           username: this.username,
           email: this.email,
-          date: this.date,
           password: this.password
         })
         .then(response => {

@@ -16,10 +16,12 @@
     </div>
     <Modal v-model="edit" title="Edit Address" @on-ok="Editad">
       <div>
+        <Input v-model="name" placeholder="Name"></Input>
         <Input v-model="province" placeholder="Province"></Input>
         <Input v-model="city" placeholder="City"></Input>
         <Input v-model="district">District</Input>
         <Input v-model="address" placeholder="detail address"></Input>
+        <Button type="primary" @click="Editad"></Button>
       </div>
     </Modal>
   </div>
@@ -43,19 +45,29 @@ export default {
       city: "",
       district: "",
       address: "",
+      name:""
     };
   },
   methods: {
     Editad: function() {
       axios
-        .post("/editaddress", {
+        .post("/api/editaddress", {
+          AddressID:this.sid,
           province: this.province,
           city: this.city,
-          region: this.region,
-          address: this.address
+          district: this.region,
+          detail: this.address,
+          name:this.name
         })
         .then(response => {
-          console.log(response);
+          if(response.data.ok)
+          {
+            alert('修改成功')
+          }
+          else
+          {
+            alert('修改失败')
+          }
         });
     },
     Remove: function() {
