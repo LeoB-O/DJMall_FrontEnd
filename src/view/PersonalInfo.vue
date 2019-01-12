@@ -31,15 +31,10 @@ export default {
   },
   created() {
     axios
-      .get("/personalinfo", {
-        params: {
-          ID: this.$route.params.id
-        }
-      })
+      .get("/personalinfo")
       .then(response => {
         this.username = response.data.username;
         this.avatarurl = response.data.avatar;
-        console.log(this.username);
       });
   },
   methods: {

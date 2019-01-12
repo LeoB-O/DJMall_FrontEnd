@@ -23,10 +23,6 @@ export default {
         {
           title: "Price",
           key: "price"
-        },
-        {
-          title: "Statue",
-          key: "status"
         }
       ],
       content: []
