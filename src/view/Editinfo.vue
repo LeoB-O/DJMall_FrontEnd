@@ -51,14 +51,14 @@ export default {
   },
   created() {
     axios
-      .get("/personalinfo")
+      .get("/api/personalinfo")
       .then(response => {
         this.username = response.data.username;
         this.email = response.data.email;
         this.password = response.data.password;
       }),
       axios
-        .get("/getaddress")
+        .get("/api/getaddress")
         .then(response => {
           this.address=response.data.address
           this.GetAbbr
@@ -67,7 +67,7 @@ export default {
   methods: {
     Commit: function() {
       axios
-        .post("/editinfo", {
+        .post("/api/editinfo", {
           username: this.username,
           email: this.email,
           password: this.password
@@ -77,7 +77,7 @@ export default {
         });
     },
     Remove:function(data){
-      axios.post("/deletead",{
+      axios.post("/api/deletead",{
         id:data,
         username:this.username
       })

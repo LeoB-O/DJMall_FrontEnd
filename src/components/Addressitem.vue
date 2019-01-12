@@ -51,7 +51,7 @@ export default {
   methods: {
     Editad: function() {
       axios
-        .post("/editaddress", {
+        .post("/api/editaddress", {
           AddressID:this.sid,
           province: this.province,
           city: this.city,
