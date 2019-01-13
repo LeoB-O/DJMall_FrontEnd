@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal v-model="modal" :fullscreen="true" width="800px" class="m">
+    <Modal v-model="childmodal"  width="800px" class="m">
       <p slot="header">
         <span>{{sshopname}}</span>
       </p>
@@ -26,7 +26,6 @@
 <script>
 import Chatbox from "@/components/Chatbox";
 import axios from "@/axios";
-// import { setInterval } from "timers";
 export default {
   name: "ChatRoom",
   components: {
@@ -41,8 +40,17 @@ export default {
       sshopname: "",
       content: "",
       chats: [],
-      status: true
+      status: true,
+      childmodal:this.modal
     };
+  },
+  watch:{
+    modal(val){
+      this.childmodal=val
+    },
+    childmodal(val){
+      this.$emit("on-modal-change",val)
+    }
   },
   methods: {
     sortByTime: function(a, b) {
@@ -63,8 +71,8 @@ export default {
         };
       } else {
         return {
-          onleft: false,
-          onright: true
+          onleft: true,
+          onright: false
         };
       }
     },
@@ -145,15 +153,22 @@ export default {
 </script>
 
 
-<style scoped>
+<style >
 .onleft {
   position: relative;
-  left: 5px;
+  left: 0%;
+  background: #fff;
 }
 
 .onright {
   position: relative;
   left: 70%;
+  background: cornflowerblue;
+}
+
+.ivu-modal-body{
+  height: 400px;
+  overflow:scroll;
 }
 
 

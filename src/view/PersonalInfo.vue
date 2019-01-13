@@ -31,7 +31,7 @@ export default {
   },
   created() {
     axios
-      .get("/personalinfo")
+      .get("/api/personalinfo")
       .then(response => {
         this.username = response.data.username;
         this.avatarurl = response.data.avatar;

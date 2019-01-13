@@ -6,7 +6,7 @@
       class="header-search"
       icon="ios-search"
       placeholder="Search"
-      :data="data"
+      :data="result"
       v-model="value"
       @on-search="handleSearch"
       @keyup.native.enter="handleSubmit"
@@ -32,7 +32,7 @@
 
 <script>
 import Search from '@/components/Search'
-
+import axios from '@/axios'
 export default {
   name: 'Header',
   props: {
@@ -45,16 +45,26 @@ export default {
   data () {
     return {
       value: '',
-      data: []
+      result: [],
+      data:[],
     }
   },
   methods: {
     handleSearch: function (value) {
-      this.data = !value ? [] : [
-        value,
-        value + value,
-        value + value + value
-      ]
+      axios.get('/search',{
+       params:{
+         search:this.value
+       }
+      }).then((response)=>{
+        let data=response.data.goods
+        console.log(this.value)
+        this.result=[]
+        for(let g of data)
+        {
+          this.result.push(g.name)
+        }
+        this.data=data
+      })
     },
     handleSubmit: function () {
       console.log('SUBMIT!')
