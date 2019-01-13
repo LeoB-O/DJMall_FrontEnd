@@ -37,7 +37,7 @@ export default {
       return this.cartItems.length
     },
     total: function () {
-      return this.cartItems.reduce((accumulate, currentValue) => accumulate.price + currentValue.price, 0)
+      return this.cartItems.reduce((accumulate, currentValue) => accumulate + currentValue.price, 0)
     }
   },
   created () {
