@@ -52,22 +52,14 @@ export default {
   },
   created () {
     axios
-      .get('/personalinfo', {
-        params: {
-          ID: this.$route.params.id
-        }
-      })
+      .get('/api/personalinfo')
       .then(response => {
         this.username = response.data.username
         this.email = response.data.email
         this.password = response.data.password
       }),
     axios
-      .get('/getaddress', {
-        params: {
-          id: this.$route.params.id
-        }
-      })
+      .get('/api/getaddress')
       .then(response => {
         this.address = response.data.address
         this.GetAbbr
@@ -76,8 +68,7 @@ export default {
   methods: {
     Commit: function () {
       axios
-        .post('/editinfo', {
-          id: this.$route.params.id,
+        .post('/api/editinfo', {
           username: this.username,
           email: this.email,
           password: this.password
@@ -87,8 +78,7 @@ export default {
         })
     },
     Remove: function (data) {
-      axios.post('/deletead', {
-        id: data,
+      axios.post('/api/deletead', {
         username: this.username
       })
         .then(reponse => {
