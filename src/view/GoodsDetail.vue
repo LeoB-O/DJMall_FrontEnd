@@ -4,13 +4,13 @@
       <div class="good-img">
         <Carousel autoplay v-model="value1" loop>
           <CarouselItem v-for="imgUrl in imgUrls" :key="imgUrl">
-            <img :src="imgUrl"/>
+            <img style="width: 100%; max-height: 100%;" :src="imgUrl"/>
           </CarouselItem>
         </Carousel>
       </div>
       <div class="good-info">
         <div class="good-name">{{name}}</div>
-        <div style="padding-left: 10%; color: darkorange;">${{price}}</div>
+        <div style="font-size: 24px; color: darkorange;">${{price.toFixed(2)}}</div>
         <GoodsOption v-for="option in options" class="good-option" :name="option.name" :values="option.values"
                      :key="option.name" @selectChange="handleChange"></GoodsOption>
         <Button type="warning" class="good-submit" @click="handleClick">加入购物车</Button>
@@ -102,25 +102,32 @@ export default {
 
   .good {
     flex-direction: column;
+    width: 100%;
   }
 
   .good-top {
     flex-direction: row;
     height: auto;
     min-height: 70%;
+    width: 100%;
+    min-width: 100%;
     flex-wrap: nowrap;
   }
 
   .good-img {
     width: 50%;
+    height: auto;
+    min-width: 50%;
   }
 
   .good-name {
-    font-size: 24px;
+    font-size: 36px;
+    font-weight: bold;
   }
 
   .good-info {
     width: 40%;
+    min-width: 40%;
     margin: 5%;
     flex-direction: column;
   }
@@ -139,5 +146,10 @@ export default {
   .good-bottom {
     margin-top: 10%;
     font-size: 24px;
+  }
+
+  .ivu-carousel-track {
+    width: 100%;
+    height: 100%;
   }
 </style>

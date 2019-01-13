@@ -16,14 +16,14 @@ export default {
   },
   data () {
     return {
-      goods: []
+      goods: [],
+      test: ''
     }
   },
-  mounted () {
+  async created () {
     if (this.$route.query.search) {
-      axios.get('/search?search=' + this.$route.query.search).then((response) => {
-        this.goods = response.goods
-      })
+      let test = await axios.get('/search?search=' + this.$route.query.search)
+      this.goods = test.data.goods
     } else {
       axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
         this.goods = response.data.goods
@@ -31,10 +31,15 @@ export default {
     }
   },
   watch: {
-    '$route' (to, from) {
-      axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
-        this.goods = response.data.goods
-      })
+    async '$route' (to, from) {
+      if (this.$route.query.search) {
+        let test = await axios.get('/search?search=' + this.$route.query.search)
+        this.goods = test.data.goods
+      } else {
+        axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
+          this.goods = response.data.goods
+        })
+      }
     }
   }
 }

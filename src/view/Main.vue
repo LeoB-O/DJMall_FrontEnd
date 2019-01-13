@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header class="header" :is-login="isLogin" :user-i-d="userID"></Header>
+    <Header class="header" :is-login="isLogin" :userID="userID"></Header>
     <router-view @login="handleLogin"></router-view>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
     axios.get('/api/user').then((response) => {
       this.isLogin = !!response.success
       this.userID = response.success ? response.data.id : null
+      console.log(this.userID)
     })
   },
   methods: {
