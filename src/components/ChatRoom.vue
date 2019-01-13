@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal v-model="modal" :fullscreen="true" width="800px" class="m">
+    <Modal v-model="modal"  width="800px" class="m">
       <p slot="header">
         <span>{{sshopname}}</span>
       </p>
@@ -63,8 +63,8 @@ export default {
         };
       } else {
         return {
-          onleft: false,
-          onright: true
+          onleft: true,
+          onright: false
         };
       }
     },
@@ -145,15 +145,22 @@ export default {
 </script>
 
 
-<style scoped>
+<style >
 .onleft {
   position: relative;
-  left: 5px;
+  left: 0%;
+  background: #fff;
 }
 
 .onright {
   position: relative;
   left: 70%;
+  background: cornflowerblue;
+}
+
+.ivu-modal-body{
+  height: 400px;
+  overflow:scroll;
 }
 
 
