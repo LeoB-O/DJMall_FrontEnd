@@ -16,7 +16,7 @@
         <Button type="warning" class="good-submit" @click="handleClick">加入购物车</Button>
         <Button type="info" class="good-submit" @click="handleClick1">与商家聊天</Button>
       </div>
-    <ChatRoom :modal="modal1" :Id="merchantId"></ChatRoom>
+    <ChatRoom :modal="modal1" :Id="merchantId" v-on:on-modal-change="ChangeModal"></ChatRoom>
     </div>
     <div class="good-bottom">
       <div class="good-descr"><div v-html="description"></div></div>
@@ -85,6 +85,9 @@ export default {
     },
     handleChat: function () {
       console.log('chat');
+    },
+    ChangeModal:function(val){
+      this.modal1=val
     }
   }
 }

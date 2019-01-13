@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal v-model="modal"  width="800px" class="m">
+    <Modal v-model="childmodal"  width="800px" class="m">
       <p slot="header">
         <span>{{sshopname}}</span>
       </p>
@@ -26,7 +26,6 @@
 <script>
 import Chatbox from "@/components/Chatbox";
 import axios from "@/axios";
-// import { setInterval } from "timers";
 export default {
   name: "ChatRoom",
   components: {
@@ -41,8 +40,17 @@ export default {
       sshopname: "",
       content: "",
       chats: [],
-      status: true
+      status: true,
+      childmodal:this.modal
     };
+  },
+  watch:{
+    modal(val){
+      this.childmodal=val
+    },
+    childmodal(val){
+      this.$emit("on-modal-change",val)
+    }
   },
   methods: {
     sortByTime: function(a, b) {
