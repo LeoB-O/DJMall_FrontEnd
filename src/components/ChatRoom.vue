@@ -40,8 +40,8 @@ export default {
       sshopname: "",
       content: "",
       chats: [],
-      status: true,
-      childmodal:this.modal
+      status: 1,
+      childmodal:this.modal,
     };
   },
   watch:{
