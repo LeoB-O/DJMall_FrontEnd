@@ -65,7 +65,7 @@ export default {
       this.select[s.name] = s.value
       console.log(this.select)
     },
-    handleClick: function () {
+     handleClick: async function () {
       let selects = []
       Object.keys(this.select).forEach((key) => {
         console.log(key)
@@ -78,7 +78,12 @@ export default {
         options: selects,
         amount: 1
       }
-      axios.put('/api/cart', payload)
+      let result = await axios.put('/api/cart', payload)
+      if (result.success) {
+        this.$Message.success('添加成功')
+      } else {
+        this.$Message.error('添加失败')
+      }
     },
     handleClick1:function(){
       this.modal1=true
