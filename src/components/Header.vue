@@ -9,6 +9,9 @@
       :data="result"
       v-model="value"
       @on-search="handleSearch"
+      @on-focus="Removedata"
+      @on-blur="Removedata"
+      @on-change="IsNull"
       @keyup.native.enter="handleSubmit"
     ></AutoComplete>
     <MenuItem v-if="isLogin" name="1" :to="'/personalInfo/'+userID">
@@ -63,12 +66,21 @@ export default {
         {
           this.result.push(g.name)
         }
-        this.data=data
+        // this.data=data
       })
     },
     handleSubmit: function () {
       console.log('SUBMIT!')
       this.$router.push('/catagory/search?search=' + this.value)
+    },
+    Removedata:function(){
+      this.result=[]
+    },
+    IsNull:function(){
+      if(this.value=='')
+      {
+        this.result=[]
+      }
     }
   }
 }
