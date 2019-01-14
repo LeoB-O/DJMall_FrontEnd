@@ -30,6 +30,9 @@
       <Icon type="ios-construct"/>
       购物车
     </MenuItem>
+    <MenuItem v-if="isLogin" @click.native="handleLogout">
+      注销
+    </MenuItem>
   </Menu>
 </template>
 
@@ -69,11 +72,16 @@ export default {
         // this.data=data
       })
     },
+    handleLogout: function () {
+      axios.get('/api/logout').then(() => {
+        this.$router.go(0);
+      })
+    },
     handleSubmit: function () {
       console.log('SUBMIT!')
       this.$router.push('/catagory/search?search=' + this.value)
     },
-    Removedata:function(){
+    Removedata: function(){
       this.result=[]
     },
     IsNull:function(){
