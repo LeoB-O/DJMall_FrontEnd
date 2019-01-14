@@ -4,7 +4,7 @@
       <div v-if="itemNum==0" style="font-size: 24px;">购物车为空</div>
       <CartItem v-for="cartItem in cartItems" class="cart-item" :name="cartItem.name" :price="cartItem.price"
                 :amount="cartItem.amount" :imgUrl="cartItem.imgUrl" :key="cartItem.name"
-                :type-args="cartItem.typeArgs"></CartItem>
+                :type-args="cartItem.typeArgs" :id="cartItem.id"></CartItem>
     </div>
     <div class="cart-infos">
       <div class="cart-info">小计</div>

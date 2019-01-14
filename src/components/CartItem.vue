@@ -10,8 +10,8 @@
         {{typeArg}}
       </div>
       <div class="cart-item-action">
-        <Button class="cart-item-action" type="warning">修改</Button>
-        <Button class="cart-item-action" type="error">删除</Button>
+        <Button @click="handleEdit" class="cart-item-action" type="warning">修改</Button>
+        <Button @click="handleDelete" class="cart-item-action" type="error">删除</Button>
       </div>
     </div>
   </div>
@@ -20,14 +20,25 @@
 </template>
 
 <script>
+  import axios from '@/axios'
 export default {
   name: 'CartItem',
   props: {
+    id: String,
     name: String,
     price: Number,
     typeArgs: Array,
     amount: Number,
     imgUrl: String
+  },
+  methods: {
+    handleEdit: function () {
+
+    },
+    handleDelete: function () {
+      axios.delete('/api/cart?id='+this.id);
+      this.$router.go(0);
+    }
   }
 }
 </script>

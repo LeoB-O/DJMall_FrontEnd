@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MyMenu class="index-menu" :contents="menu"></MyMenu>
+    <MyMenu class="index-menu" :contents="menu" :inStore="false"></MyMenu>
     <div class="index-content"><router-view></router-view></div>
   </div>
 </template>

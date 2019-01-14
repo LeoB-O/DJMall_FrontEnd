@@ -5,7 +5,7 @@
         {{content.name}}
       </template>
       <MenuItem v-if="inStore" @on-update-active-name="handleClick(content.name, item)" v-for="item in content.value" :key="item">{{item}}</MenuItem>
-      <MenuItem v-else :to="'/catagory/'+content.name+'-'+item" :name="item" v-for="item in content.value" :key="item">{{item}}</MenuItem>
+      <MenuItem v-if="!inStore" :to="'/catagory/'+content.name+'-'+item" :name="item" v-for="item in content.value" :key="item">{{item}}</MenuItem>
     </Submenu>
   </Menu>
 </template>
