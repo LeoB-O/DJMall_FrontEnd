@@ -3,11 +3,11 @@
     <h3>通讯地址</h3>
     <div class="address">
       <div class="left">
-        <span>{{addressdetail}}</span>
+        <span>详细地址:{{addressdetail}}</span>
         <br>
-        <span>{{Administrativeaddress}}</span>
+        <span>行政区域:{{Administrativeaddress}}</span>
         <br>
-        <span>{{phonenumber}}</span>
+        <span>电话号码:{{phonenumber}}</span>
       </div>
       <div class="right">
         <Button type="primary" @click="edit = true">修改</Button>
@@ -19,9 +19,10 @@
         <Input v-model="name" placeholder="Name"></Input>
         <Input v-model="province" placeholder="Province"></Input>
         <Input v-model="city" placeholder="City"></Input>
-        <Input v-model="district">District</Input>
+        <Input v-model="district" placeholder="district"></Input>
         <Input v-model="address" placeholder="detail address"></Input>
-        <Button type="primary" @click="Editad"></Button>
+        <Input v-model="phone" placeholder="phonenumber"></Input>
+        <Button type="primary" @click="Editad">Commit</Button>
       </div>
     </Modal>
   </div>
@@ -41,11 +42,12 @@ export default {
     return {
       sid:this.id,
       edit: false,
-      province: "",
-      city: "",
-      district: "",
-      address: "",
-      name:""
+      province: '',
+      city: '',
+      district: '',
+      address: '',
+      name:'',
+      phone:''
     };
   },
   methods: {
@@ -55,18 +57,23 @@ export default {
           AddressID:this.sid,
           province: this.province,
           city: this.city,
-          district: this.region,
+          district: this.district,
           detail: this.address,
-          name:this.name
+          name:this.name,
+          phonenumber:this.phone
         })
         .then(response => {
-          if(response.data.ok)
-          {
-            alert('修改成功')
-          }
-          else
-          {
-            alert('修改失败')
+         if (response.data.ok) {
+            this.$Notice.open({
+              title: "Notification ",
+              desc: "success"
+            });
+            this.$router.go(0)
+          } else {
+            this.$Notice.open({
+              title: "Notification ",
+              desc: "false"
+            });
           }
         });
     },
@@ -83,9 +90,10 @@ export default {
 }
 .right {
   float: right;
+  display: flex;
 }
 .address {
-  width: 300px;
+  width: auto;
   margin: 0 auto;
 }
 .addressbox {
@@ -96,6 +104,11 @@ export default {
   border: 3px black;
   float: left;
   border-radius: 10px;
+}
+
+.ivu-modal-body {
+  height: 400px;
+  overflow: scroll;
 }
 </style>
 

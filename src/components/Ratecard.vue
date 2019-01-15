@@ -5,7 +5,6 @@
       <div class="content">
         <span>商品名:{{good.name}}</span>
         <span>价格:{{good.price}}</span>
-        <span>商品描述:{{good.description}}</span>
       </div>
     </div>
     <div class="foot">
