@@ -3,11 +3,11 @@
     <h3>通讯地址</h3>
     <div class="address">
       <div class="left">
-        <span>{{addressdetail}}</span>
+        <span>详细地址:{{addressdetail}}</span>
         <br>
-        <span>{{Administrativeaddress}}</span>
+        <span>行政区域:{{Administrativeaddress}}</span>
         <br>
-        <span>{{phonenumber}}</span>
+        <span>电话号码:{{phonenumber}}</span>
       </div>
       <div class="right">
         <Button type="primary" @click="edit = true">修改</Button>
