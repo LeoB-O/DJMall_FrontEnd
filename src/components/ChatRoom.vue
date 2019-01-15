@@ -45,11 +45,11 @@ export default {
       interval: ""
     };
   },
-  watch: {
-    modal(val) {
-      this.childmodal = val;
-      if (childmodal == false) {
-        clearInterval(this.interval);
+  watch:{
+    modal(val){
+      this.childmodal=val
+      if (this.childmodal == false) {
+        clearInterval(this.interval)
       }
     },
     childmodal(val) {
