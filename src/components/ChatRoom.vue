@@ -48,7 +48,7 @@ export default {
   watch:{
     modal(val){
       this.childmodal=val
-      if (childmodal == false) {
+      if (this.childmodal == false) {
         clearInterval(this.interval)
       }
     },
