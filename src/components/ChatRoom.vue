@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Modal v-model="childmodal"  width="800px" class="m">
+    <Modal v-model="childmodal" width="800px" class="m">
       <p slot="header">
-        <span>{{sshopname}}</span>
+        <span>{{name}}</span>
       </p>
 
       <Chatbox
@@ -33,7 +33,7 @@ export default {
   },
   props: {
     modal: Boolean,
-    Id: String
+    name: String
   },
   data() {
     return {
@@ -41,19 +41,19 @@ export default {
       content: "",
       chats: [],
       status: 0,
-      childmodal:this.modal,
-      interval: ''
+      childmodal: this.modal,
+      interval: ""
     };
   },
-  watch:{
-    modal(val){
-      this.childmodal=val
+  watch: {
+    modal(val) {
+      this.childmodal = val;
       if (childmodal == false) {
-        clearInterval(this.interval)
+        clearInterval(this.interval);
       }
     },
-    childmodal(val){
-      this.$emit("on-modal-change",val)
+    childmodal(val) {
+      this.$emit("on-modal-change", val);
     }
   },
   methods: {
@@ -84,10 +84,10 @@ export default {
       axios
         .post("/api/chat", {
           to: this.Id,
-          message:this.content
+          message: this.content
         })
         .then(resposne => {
-          console.log(resposne.body.success)
+          console.log(resposne.body.success);
           // if (resposne.body.success) {
           //   this.$Notice.open({
           //     title: "Notification",
@@ -104,7 +104,7 @@ export default {
   },
   computed: {},
   updated() {
-    console.log('update');
+    console.log("update");
     if (this.status == 1) {
       this.interval = setInterval(getChats, 1000);
     }
@@ -136,24 +136,13 @@ export default {
             content[i].id = i;
           }
           that.chats = content;
-          console.log(that.chats)
+          console.log(that.chats);
         });
     }
 
     // getChats();
   },
-  created () {
-    axios
-      .get("/store", {
-        params: {
-          id: this.Id
-        }
-      })
-      .then(response => {
-        console.log(response.data.name)
-        this.sshopname = response.data.name;
-      });
-  }
+  created() {}
 };
 </script>
 
@@ -171,10 +160,8 @@ export default {
   background: cornflowerblue;
 }
 
-.ivu-modal-body{
+.ivu-modal-body {
   height: 400px;
-  overflow:scroll;
+  overflow: scroll;
 }
-
-
 </style>
