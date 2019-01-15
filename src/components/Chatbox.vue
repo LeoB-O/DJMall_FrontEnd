@@ -13,7 +13,7 @@ export default {
   name: "Chatbox",
   props: {
     Name: String,
-    Time: Date,
+    Time: String,
     Content: String
   }
 };
@@ -24,8 +24,9 @@ span {
   font-size: 15px;
   margin: 5px 5px;
 }
+
 .content{
-    font-size: 10px;
+    font-size: 24px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 10px;
 }

@@ -33,7 +33,8 @@ export default {
   },
   props: {
     modal: Boolean,
-    name: String
+    name: String,
+    Id: String
   },
   data() {
     return {
@@ -123,12 +124,12 @@ export default {
           for (let f in fromuser) {
             fromuser[f].type = 0;
             fromuser[f].name = "我";
-            fromuser[f].fmtime = new Date(fromuser[f].time);
+            fromuser[f].fmtime = fromuser[f].time;
           }
           for (let t in touser) {
             touser[t].type = 1;
             touser[t].name = this.sshopname;
-            touser[t].fmtime = new Date(touser[t].time);
+            touser[t].fmtime = touser[t].time;
           }
           let content = fromuser.concat(touser);
           content.sort(that.sortByTime);
@@ -158,10 +159,12 @@ export default {
   position: relative;
   left: 70%;
   background: cornflowerblue;
+  color: #fff;
 }
 
 .ivu-modal-body {
   height: 400px;
   overflow: scroll;
+  background: #eee;
 }
 </style>

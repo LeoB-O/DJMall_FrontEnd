@@ -1,7 +1,8 @@
 <template>
   <Carousel style="height: 90%; width: 90%; margin-left: 5%;" autoplay v-model="value1" loop>
     <CarouselItem style="height: 100%; overflow: hidden;" v-for="imgUrl in imgUrls" :key="imgUrl">
-      <img style="object-fit: cover; overflow: hidden" :src="imgUrl" />
+      <!--<img style="object-fit: cover; overflow: hidden" :src="imgUrl" />-->
+      <div :style="'background-image: url('+imgUrl+');background-size:contain;background-repeat:no-repeat;background-position:50% 50%;width:100%;height:100%'"></div>
     </CarouselItem>
   </Carousel>
 </template>
@@ -25,9 +26,8 @@ export default {
 }
 </script>
 
-<style scoped>
-* {
-  width: 100%;
+<style>
+.ivu-carousel-track {
   height: 100%;
 }
 </style>
