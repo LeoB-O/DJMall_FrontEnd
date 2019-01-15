@@ -2,6 +2,11 @@
   <Menu class="header-menu" mode="horizontal" theme="light" active-name="1">
     <Icon size="30" class="header-icon" type="logo-bitcoin"/>
     <router-link to="/" class="header-title">DJ MALL</router-link>
+    <Select v-model="sortType" style="width: 100px;padding: 15px 5px;">
+      <Option value="priceAscend">价格升序</Option>
+      <Option value="priceDescened">价格降序</Option>
+      <Option value="rateDescend">评分升序</Option>
+    </Select>
     <AutoComplete
       class="header-search"
       icon="ios-search"
@@ -52,7 +57,8 @@ export default {
     return {
       value: '',
       result: [],
-      data:[],
+      data: [],
+      sortType: ''
     }
   },
   methods: {
@@ -79,7 +85,7 @@ export default {
     },
     handleSubmit: function () {
       console.log('SUBMIT!')
-      this.$router.push('/catagory/search?search=' + this.value)
+      this.$router.push('/catagory/search?search=' + this.value + '&sort=' + this.sortType)
     },
     Removedata: function(){
       this.result=[]

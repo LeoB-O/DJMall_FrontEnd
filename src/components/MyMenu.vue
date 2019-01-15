@@ -4,7 +4,7 @@
       <template slot="title">
         {{content.name}}
       </template>
-      <MenuItem v-if="inStore" @on-update-active-name="handleClick(content.name, item)" v-for="item in content.value" :key="item">{{item}}</MenuItem>
+      <MenuItem v-if="inStore" @click.native="handleClick(content.name, item)" v-for="item in content.value" :key="item">{{item}}</MenuItem>
       <MenuItem v-if="!inStore" :to="'/catagory/'+content.name+'-'+item" :name="item" v-for="item in content.value" :key="item">{{item}}</MenuItem>
     </Submenu>
   </Menu>

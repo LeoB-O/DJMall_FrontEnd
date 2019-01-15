@@ -24,6 +24,20 @@ export default {
     if (this.$route.query.search) {
       let test = await axios.get('/search?search=' + this.$route.query.search)
       this.goods = test.data.goods
+      let sortType = this.$route.query.sort;
+      switch (sortType) {
+        case 'priceAscend':
+          this.sortByPrice('ascend')
+          break;
+        case 'priceDescend':
+          this.sortByPrice('descend')
+          break;
+        case 'rate':
+          this.sortByRate()
+          break
+        default:
+          this.sortByRate()
+      }
     } else {
       axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
         this.goods = response.data.goods
@@ -40,6 +54,18 @@ export default {
           this.goods = response.data.goods
         })
       }
+    }
+  },
+  methods: {
+    sortByPrice: function (type) {
+      if (type == 'ascend') {
+        this.goods.sort((a, b) => a.price - b.price)
+      } else {
+        this.good.sort((a, b) => b.price - a.price)
+      }
+    },
+    sortByRate: function () {
+      this.goods.sort((a, b) => a.rate - b.rate)
     }
   }
 }
