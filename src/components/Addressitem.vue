@@ -90,9 +90,10 @@ export default {
 }
 .right {
   float: right;
+  display: flex;
 }
 .address {
-  width: 300px;
+  width: auto;
   margin: 0 auto;
 }
 .addressbox {
