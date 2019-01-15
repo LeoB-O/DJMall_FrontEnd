@@ -55,13 +55,17 @@ export default {
             email: this.email
           })
           .then(response => {
-            if(response.data.ok)
-            {
-              this.$Message.info('SignUp Success')
-            }
-            else
-            {
-              this.$$Message.info('Username or Email has been Used')
+            if (response.data.ok) {
+              this.$Notice.open({
+                title: "Notification",
+                desc: "Signup Success"
+              });
+              this.$router.go("/signin");
+            } else {
+              this.$Notice.open({
+                title: "Notification",
+                desc: "Username or Password has been used"
+              });
             }
           });
       } else {

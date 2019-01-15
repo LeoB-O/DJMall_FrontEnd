@@ -15,7 +15,7 @@
 
       <div class="Button">
         <Button type="primary" @click="checkPassword">SignIn</Button>
-        <Button type="info" style="margin-left:40px">SignUp</Button>
+        <Button type="info" style="margin-left:40px" @click="GoSignUp">SignUp</Button>
       </div>
     </div>
   </div>
@@ -54,6 +54,9 @@ export default {
             this.$router.push('/')
           }
         })
+    },
+    GoSignUp:function(){
+      this.$router.push('/signup')
     }
   }
 }
