@@ -40,13 +40,17 @@ export default {
       sshopname: "",
       content: "",
       chats: [],
-      status: 1,
+      status: 0,
       childmodal:this.modal,
+      interval: ''
     };
   },
   watch:{
     modal(val){
       this.childmodal=val
+      if (childmodal == false) {
+        clearInterval(this.interval)
+      }
     },
     childmodal(val){
       this.$emit("on-modal-change",val)
@@ -100,10 +104,11 @@ export default {
   },
   computed: {},
   updated() {
+    console.log('update');
     if (this.status == 1) {
-      this.status++;
-      setInterval(getChats, 1000);
+      this.interval = setInterval(getChats, 1000);
     }
+    this.status++;
     let that = this;
     function getChats() {
       axios
@@ -134,7 +139,7 @@ export default {
           console.log(that.chats)
         });
     }
-    
+
     // getChats();
   },
   created () {
