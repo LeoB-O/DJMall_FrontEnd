@@ -15,7 +15,7 @@
       ></Chatbox>
 
       <div slot="footer">
-        <Input v-model="content" placeholder="Please Input">
+        <Input v-model="content" placeholder="Please Input" @on-enter="handleClick">
           <Button type="primary" slot="append" @click="handleClick">Send</Button>
         </Input>
       </div>
@@ -100,7 +100,8 @@ export default {
           //     desc: "Send Faild"
           //   });
           // }
-        });
+        })
+      this.content = ''
     }
   },
   computed: {},

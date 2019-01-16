@@ -4,8 +4,8 @@
     <router-link to="/" class="header-title">DJ MALL</router-link>
     <Select v-model="sortType" style="width: 100px;padding: 15px 5px;">
       <Option value="priceAscend">价格升序</Option>
-      <Option value="priceDescened">价格降序</Option>
-      <Option value="rateDescend">评分升序</Option>
+      <Option value="priceDescend">价格降序</Option>
+      <Option value="rateDescend">评分降序</Option>
     </Select>
     <AutoComplete
       class="header-search"
@@ -35,7 +35,7 @@
       <Icon type="ios-construct"/>
       购物车
     </MenuItem>
-    <MenuItem v-if="isLogin" @click.native="handleLogout">
+    <MenuItem name="5" v-if="isLogin" @click.native="handleLogout">
       注销
     </MenuItem>
   </Menu>

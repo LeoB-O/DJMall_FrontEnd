@@ -1,7 +1,7 @@
 <template>
   <div>
     <GoodsInfo v-for="good in goods" class="goods-info" :imageUrl="good.imageUrl" :price="good.price" :name="good.name"
-               :description="good.description" :merchantID="good.merchantID" :id="good.id" :key="good.name"></GoodsInfo>
+               :description="good.description" :merchantID="good.merchantID" :id="good.id" :key="good.name" :rate="good.rate"></GoodsInfo>
   </div>
 </template>
 
@@ -17,27 +17,33 @@ export default {
   data () {
     return {
       goods: [],
-      test: ''
+      test: '',
+      sortType: ''
     }
   },
   async created () {
     if (this.$route.query.search) {
+      this.sortType = this.$route.query.sort
       let test = await axios.get('/search?search=' + this.$route.query.search)
       this.goods = test.data.goods
       let sortType = this.$route.query.sort;
+      console.log(sortType)
       switch (sortType) {
         case 'priceAscend':
           this.sortByPrice('ascend')
           break;
         case 'priceDescend':
           this.sortByPrice('descend')
-          break;
-        case 'rate':
+          console.log('priceDescend')
+          break
+        case 'rateDescend':
           this.sortByRate()
           break
         default:
           this.sortByRate()
       }
+      // this.$router.go(0)
+      this.$forceUpdate()
     } else {
       axios.get('/goods/category?category=' + this.$route.params.catagory).then((response) => {
         this.goods = response.data.goods
@@ -61,11 +67,11 @@ export default {
       if (type == 'ascend') {
         this.goods.sort((a, b) => a.price - b.price)
       } else {
-        this.good.sort((a, b) => b.price - a.price)
+        this.goods.sort((a, b) => b.price - a.price)
       }
     },
     sortByRate: function () {
-      this.goods.sort((a, b) => a.rate - b.rate)
+      this.goods.sort((a, b) => b.rate - a.rate)
     }
   }
 }

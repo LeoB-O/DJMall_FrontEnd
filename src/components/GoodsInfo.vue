@@ -5,9 +5,9 @@
   </router-link>
   <div class="goods-info-details">
     <div class="goods-info-name">{{name}}</div>
-    <div class="goods-info-descr">{{descr}}</div>
     <div class="goods-info-price">${{price}}</div>
     <router-link :to="'/commercial/'+merchantID">{{merchantName}}</router-link>
+    <Rate v-model="rate" disabled style="flex-direction: row;"></Rate>
   </div>
 </div>
 </template>
@@ -27,7 +27,8 @@ export default {
     name: String,
     price: Number,
     description: String,
-    merchantID: String
+    merchantID: String,
+    rate: Number
   },
   data () {
     return {

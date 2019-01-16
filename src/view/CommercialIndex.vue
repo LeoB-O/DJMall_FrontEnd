@@ -8,7 +8,7 @@
         <div class="com-name">{{name}}</div>
         <div class="goods-infos">
           <GoodsInfo v-for="good in goods" class="goods-info" :imageUrl="good.imageUrl" :price="good.price"
-                     :name="good.name"
+                     :name="good.name" :rate="good.rate"
                      :description="good.description" :id="good.id" :key="good.name"></GoodsInfo>
         </div>
       </div>
@@ -48,7 +48,8 @@ export default {
           imageUrl: current.imgUrls[0],
           price: current.price,
           description: current.description,
-          id: current.id
+          id: current.id,
+          rate: current.rate
         }
       })
     }
